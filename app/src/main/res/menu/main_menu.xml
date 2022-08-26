@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/mnuVendas"
+            android:icon="@drawable/ic_clientes"
+            android:title="Clientes"/>
+        <item
+            android:id="@+id/mnuResumo"
+            android:icon="@drawable/ic_resumo"
+            android:title="Resumo Vendas"
+            android:titleCondensed="Resumo"/>
+        <item
+            android:id="@+id/mnuConsulta"
+            android:icon="@drawable/ic_consulta"
+            android:title="Consultas">
+            <menu>
+                <item
+                    android:id="@+id/mnuIC"
+                    android:title="Itens de Controle" />
+                <item
+                    android:id="@+id/mnuTabPreco"
+                    android:title="Tabela de Preços" />
+                <item
+                    android:id="@+id/mnuAcaoes"
+                    android:title="Ações de Mercado" />
+                <item
+                    android:id="@+id/mnuPesquisas"
+                    android:title="Pesquisas Ativas" />
+                <item
+                    android:id="@+id/mnuPhone"
+                    android:title="Dados do Aparelho" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/mnuSupervisor"
+            android:icon="@drawable/ic_supervisor"
+            android:title="Supervisor"/>
+        <item
+            android:id="@+id/mnuComunicacao"
+            android:icon="@drawable/device_access_network_cell"
+            android:title="Comunicação"/>
+        <item
+            android:id="@+id/mnuPreCadastro"
+            android:icon="@drawable/ic_precadastro"
+            android:title="Pré-Cadastro"/>
+        <item
+            android:id="@+id/mnuAcesso"
+            android:title="Liberar Acesso"/>
+        <item
+            android:id="@+id/mnuReimportar"
+            android:title="Novo Trabalho"/>
+        <item
+            android:id="@+id/mnuBackup"
+            android:title="Restaurar Backup"/>
+        <item
+            android:id="@+id/mnuBancoDados"
+            android:title="Banco de Dados"/>
+        <item
+            android:id="@+id/mnuConfiguracao"
+            android:title="Configurações"/>
+        <item
+            android:id="@+id/mnuAbout"
+            android:title="Sobre"/>
+        <item
+            android:id="@+id/mnuSair"
+            android:title="Sair"/>
+    </group>
+</menu>
