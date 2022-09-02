@@ -2,27 +2,45 @@
     <string name="app_name">NewManager</string>
     <string name="database_info">Banco de Dados não Inicializado</string>
     <string name="version_info">Manager Mobile</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Escuro</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_teste">teste</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_main_activitydas">MainActivitydas</string>
-    <string name="title_activity_manager_mobile">ManagerMobile</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_activity_manager_mobile">Manager</string>
+    <string name="navigation_drawer_open">Abrir Menu</string>
+    <string name="navigation_drawer_close">Fechar Menu</string>
+    <string name="nav_header_title"></string>
+    <string name="nav_header_subtitle"></string>
+    <string name="nav_header_desc">Menu Cabeçalho</string>
+    <string name="action_settings">Opções</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="text_vendas">Clientes</string>
+    <string name="text_resumo">Resumo</string>
+    <string name="text_consultas">Consultas</string>
+    <string name="text_item_controle">Itens de Controle</string>
+    <string name="text_tabela_preco">Tabela de Preços</string>
+    <string name="text_acao_mercado">Ações de Mercado</string>
+    <string name="text_pesquisa_ativa">Pesquisas Ativas</string>
+    <string name="text_dados_aparelho">Dados do Aparelho</string>
+
+    <string name="menu_home">Início</string>
+    <string name="login">Login</string>
+    <string name="menu_visit_list">Lista de Clientes</string>
+    <string name="menu_register_user">Registro de Usuário</string>
+    <string name="menu_supervisor">Supervisor</string>
+    <string name="menu_registro_cliente">Cadastro de Clientes</string>
+    <string name="menu_comunicacao">Comunicação</string>
+    <string name="menu_dados">Banco de Dados</string>
+    <string name="menu_settings">Configurações</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Setor</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="action_sign_up">Criar Usuario</string>
+    <string name="welcome">"Bem Vindo"</string>
+    <string name="invalid_username">Setor não encontrado</string>
+    <string name="invalid_password">Senha deve conter mais de 5 Caracteres</string>
+    <string name="login_failed">"Falha no login"</string>
 </resources>

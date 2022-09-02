@@ -1,19 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.NewManager" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.NewManager" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_500</item>
         <item name="colorPrimaryDark">@color/primary_700</item>
         <item name="colorAccent">@color/secondary_500</item>
+
         <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.NewManager.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
-    <style name="Theme.NewManager.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.NewManager.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
+        <item name="colorControlNormal">#ffffff</item>
+    </style>
 
-    <style name="Theme.NewManager.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.NewManager.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight">
+        <item name="colorControlNormal">#ffffff</item>
+    </style>
 </resources>

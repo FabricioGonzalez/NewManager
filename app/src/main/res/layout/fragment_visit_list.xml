@@ -5,10 +5,10 @@
     android:id="@+id/vendas_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Activities.ui.visitList.VisitListFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Views.Activities.ui.home.visitList.VisitListFragment">
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/abas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,11 +16,11 @@
         app:tabMode="fixed"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/abas_view_pager"
         android:layout_width="411dp"
         android:layout_height="679dp"
-        tools:ignore="SpeakableTextPresentCheck"></android.support.v4.view.ViewPager>
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </LinearLayout>
