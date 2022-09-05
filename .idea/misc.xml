@@ -3,6 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/activity_manager_mobile.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/external_file_db_layout.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_client_registration.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_client_visit.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_communication.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_dados.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_database_backup.xml" value="0.4242125984251969" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_database_clean_up.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_database_list.xml" value="0.4242125984251969" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_home.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_login.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_register_user.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_settings.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_supervisor.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/fragment_visit_list.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout-small/nav_header_manager_mobile.xml" value="0.5762032085561497" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout/external_file_db_layout.xml" value="0.10916919959473151" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout/fragment_dados.xml" value="0.1" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout/fragment_database_list.xml" value="0.1" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout/fragment_login.xml" value="0.22" />
+        <entry key="..\:/Users/Kurog/Desktop/NewManager/app/src/main/res/layout/fragment_register_user.xml" value="0.25" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/drawable/rounded_shape.xml" value="0.248" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/drawable/rounded_shape_primary.xml" value="0.249" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/drawable/shapes.xml" value="0.196" />

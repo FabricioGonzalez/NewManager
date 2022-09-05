@@ -1,10 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Strings Home Page -->
     <string name="app_name">NewManager</string>
     <string name="database_info">Banco de Dados não Inicializado</string>
     <string name="version_info">Manager Mobile</string>
-
-    <!-- Strings Home Menu -->
     <string name="text_vendas">Clientes</string>
     <string name="text_resumo">Resumo</string>
     <string name="text_consultas">Consultas</string>
@@ -13,26 +11,14 @@
     <string name="text_acao_mercado">Ações de Mercado</string>
     <string name="text_pesquisa_ativa">Pesquisas Ativas</string>
     <string name="text_dados_aparelho">Dados do Aparelho</string>
-
-    <!-- Strings Settings Page -->
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
-
-
-    <!-- Strings used for fragments for navigation -->
-
     <string name="title_activity_manager_mobile">Manager</string>
     <string name="navigation_drawer_open">Abrir Menu</string>
     <string name="navigation_drawer_close">Fechar Menu</string>
-    <string name="nav_header_title" translatable="false"></string>
-    <string name="nav_header_subtitle" translatable="false">" "</string>
     <string name="nav_header_desc">Menu Cabeçalho</string>
     <string name="action_settings">Opções</string>
     <string name="login">Login</string>
-
-
-
-    <!-- Strings menu Drawer -->
     <string name="menu_home">Início</string>
     <string name="menu_visit_list">Lista de Clientes</string>
     <string name="menu_register_user">Registro de Usuário</string>
@@ -41,19 +27,15 @@
     <string name="menu_comunicacao">Comunicação</string>
     <string name="menu_dados">Banco de Dados</string>
     <string name="menu_settings">Configurações</string>
-
-    <!-- Strings related to login -->
     <string name="prompt_email">Setor</string>
     <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Entrar</string>
     <string name="action_sign_up">Criar Usuario</string>
-    <string name="welcome">"Bem Vindo"</string>
+    <string name="welcome">Bem Vindo</string>
     <string name="invalid_username">Setor não encontrado</string>
     <string name="invalid_password">Senha deve conter mais de 5 Caracteres</string>
-    <string name="login_failed">"Falha no login"</string>
-
-    <!-- Strings Register User -->
+    <string name="login_failed">Falha no login</string>
     <string name="text_nome_vendedor">Nome Completo</string>
     <string name="text_setor_vendedor">Setor</string>
     <string name="text_senha_vendedor">Senha</string>

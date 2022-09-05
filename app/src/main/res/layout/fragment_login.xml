@@ -16,7 +16,7 @@
         android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:background="@drawable/rounded_shape"
@@ -25,12 +25,10 @@
         android:minHeight="48dp"
         android:paddingLeft="8dp"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_login"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintTop_toBottomOf="@+id/logo_login" />
 
     <EditText
         android:id="@+id/password"
@@ -38,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="324dp"
+        android:layout_marginBottom="304dp"
         android:autofillHints=""
         android:background="@drawable/rounded_shape"
         android:hint="@string/prompt_password"
@@ -50,8 +48,10 @@
         android:selectAllOnFocus="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/signUpButton"
@@ -71,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.149" />
+        app:layout_constraintVertical_bias="0.566" />
 
     <Button
         android:id="@+id/login"
@@ -98,7 +98,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/password"
         app:layout_constraintStart_toStartOf="@+id/password"
