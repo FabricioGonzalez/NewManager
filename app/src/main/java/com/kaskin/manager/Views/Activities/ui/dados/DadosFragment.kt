@@ -1,30 +1,22 @@
 package com.kaskin.manager.Views.Activities.ui.dados
 
-import android.content.ContentResolver
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.kaskin.manager.Views.Adapters.ExternalFileDbAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
+import com.kaskin.manager.Views.Activities.ui.dados.database_backup.DatabaseBackupFragment
+import com.kaskin.manager.Views.Activities.ui.dados.database_clean_up.DatabaseCleanUpFragment
+import com.kaskin.manager.Views.Activities.ui.dados.database_list.DatabaseListFragment
+import com.kaskin.manager.Views.Adapters.AbasAdapter
 import com.kaskin.manager.databinding.FragmentDadosBinding
 
+
 class DadosFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = DadosFragment()
-    }
-
-    private lateinit var externalFileDbAdapter: ExternalFileDbAdapter
-
-    private lateinit var contentResolver: ContentResolver
     private lateinit var viewModel: DadosViewModel
-
 
     private var _binding: FragmentDadosBinding? = null
 
@@ -41,105 +33,54 @@ class DadosFragment : Fragment() {
             ViewModelProvider.NewInstanceFactory()
         )[DadosViewModel::class.java]
 
-
         _binding = FragmentDadosBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
 
-        externalFileDbAdapter = ExternalFileDbAdapter()
+        val adapter = AbasAdapter(requireActivity())
 
-        contentResolver = requireContext().contentResolver
+        adapter.adicionar(DatabaseListFragment(), "Bancos de Dados")
+        adapter.adicionar(DatabaseCleanUpFragment(), "Limpeza de Banco de Dados")
+        adapter.adicionar(DatabaseBackupFragment(), "Backup de Banco de Dados")
 
-        checkPermission(
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            PackageManager.PERMISSION_GRANTED
-        )
-        checkPermission(
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            PackageManager.PERMISSION_GRANTED
-        )
+        val viewPager = binding.abasViewPager
+        viewPager?.adapter = adapter
 
-        setupExternalStorageFiles()
+        viewPager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                if (position == 0) {
+                    adapter.refreshFragment(0)
+                } /*else if (position == 1) {
+                    adapter.refreshFragment(1)
+                } else if (position == 2) {
+                    adapter.refreshFragment(2)
+                }*/
+                super.onPageSelected(position)
+            }
+        })
 
-        LoadFiles()
-        setupExternalStorageFiles()
+        val tabLayout = binding.abas
+        TabLayoutMediator(tabLayout!!, viewPager!!) { tab, position ->
+            tab.text = adapter.getPageTitle(position)
+        }.attach()
 
         return root
     }
 
-    private fun LoadFiles() {
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.abasViewPager?.unregisterOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                if (position == 0) {
 
-        val files = GetFilesFromExternalStorage()
-        externalFileDbAdapter.SetDataSet(files.toTypedArray())
-
-
-    }
-
-    private fun setupExternalStorageFiles() = binding.dbList.apply {
-        adapter = externalFileDbAdapter
-        layoutManager =
-            LinearLayoutManager(this.context)
-    }
-
-    private fun checkPermission(permission: String, requestCode: Int) {
-        if (context?.applicationContext!!.checkPermission(
-                permission, requestCode, 0
-            ) == PackageManager.PERMISSION_DENIED
-        ) {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                emptyArray(),
-                requestCode
-            );
-        } else {
-            Toast.makeText(requireActivity(), "Permission already granted", Toast.LENGTH_SHORT)
-                .show();
-        }
-    }
-
-    private fun GetFilesFromExternalStorage(): List<String> {
-        var items: List<String> = emptyList()
-/*
-        val collection = MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
-
-
-        val projection = arrayOf(
-            MediaStore.Files.FileColumns._ID,
-            MediaStore.Files.FileColumns.DISPLAY_NAME,
-        )
-
-        contentResolver.query(
-            collection,
-            projection,
-            null,
-            null,
-            "${MediaStore.Files.FileColumns.DISPLAY_NAME} ASC"
-        )?.use { cursor ->
-            val idColumn = cursor.getColumnIndex(MediaStore.Files.FileColumns._ID)
-            val nameColumn = cursor.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME)
-
-            while (cursor.moveToNext()) {
-                val id = cursor.getLong(idColumn)
-                val displayName = cursor.getString(nameColumn)
-
-                println(id)
-                items.plus(displayName)
+                } else if (position == 1) {
+                    // you are on the second page
+                } else if (position == 2) {
+                    // you are on the third page
+                }
+                super.onPageSelected(position)
             }
-        }
-*/
-
-        val directory = this.context?.applicationContext?.getExternalFilesDir("/Manager")
-        val result = directory?.listFiles()
-//
-//        var file = File("${directory?.absolutePath}/manager.db")
-//        file.createNewFile()
-//        file.writeText("")
-
-        result?.forEach {
-            items = items.plus(it?.absolutePath ?: "not found")
-        }
-        return items
-
+        })
     }
-
 }

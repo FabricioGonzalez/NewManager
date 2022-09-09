@@ -54,10 +54,10 @@ class HomeFragment : Fragment() {
         item?.text = homeViewModel.user.value?.setor
 
         UpdateConnectionState(root)
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+/*        val textView: TextView = binding.textHome
+        homeViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }*/
 
         return root
     }

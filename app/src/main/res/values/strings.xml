@@ -33,6 +33,10 @@
     <string name="menu_comunicacao">Comunicação</string>
     <string name="menu_dados">Banco de Dados</string>
     <string name="menu_settings">Configurações</string>
+
+    <!-- Strings related to Communication -->
+    <string name="download_button">Baixar</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Setor</string>
     <string name="prompt_password">Senha</string>

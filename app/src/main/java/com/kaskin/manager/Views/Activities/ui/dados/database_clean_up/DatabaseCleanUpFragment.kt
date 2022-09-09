@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kaskin.manager.R
+import com.kaskin.manager.databinding.FragmentDatabaseCleanUpBinding
 
 class DatabaseCleanUpFragment : Fragment() {
+    private var _binding: FragmentDatabaseCleanUpBinding? = null
 
-    companion object {
-        fun newInstance() = DatabaseCleanUpFragment()
-    }
+    private val binding get() = _binding!!
 
     private lateinit var viewModel: DatabaseCleanUpViewModel
 
@@ -20,13 +19,19 @@ class DatabaseCleanUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_database_clean_up, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+
+        viewModel = ViewModelProvider(this)[DatabaseCleanUpViewModel::class.java]
+
+        _binding = FragmentDatabaseCleanUpBinding.inflate(inflater, container, false)
+
+        val root: View = binding.root
+
+        return root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DatabaseCleanUpViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
-
 }

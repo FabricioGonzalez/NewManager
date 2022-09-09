@@ -1,18 +1,16 @@
 package com.kaskin.manager.Views.Activities.ui.supervisor
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kaskin.manager.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.kaskin.manager.databinding.FragmentSupervisorBinding
 
 class SupervisorFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SupervisorFragment()
-    }
+    private var _binding: FragmentSupervisorBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var viewModel: SupervisorViewModel
 
@@ -20,16 +18,17 @@ class SupervisorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_supervisor, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
-        ).get(SupervisorViewModel::class.java)
-        // TODO: Use the ViewModel
+        )[SupervisorViewModel::class.java]
+
+        _binding = FragmentSupervisorBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

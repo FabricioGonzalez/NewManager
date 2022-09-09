@@ -1,11 +1,11 @@
 package com.kaskin.manager.DataSources
 
-import com.google.gson.Gson
-import com.kaskin.manager.Models.LoggedInUser
-import com.kaskin.manager.Models.LoginRequest
-import com.kaskin.manager.Models.Result
-import com.kaskin.manager.Models.UserLoginData
+import android.util.Log
+import com.kaskin.manager.Models.*
 import com.kaskin.manager.Repositories.HTTPRepository.HTTPWebClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
 
 /**
@@ -15,29 +15,26 @@ class LoginDataSource {
 
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
         try {
-
-            val gson = Gson()
-
             var responseData: UserLoginData? = null
 
             val call = HTTPWebClient().loginService()
-                .GetLogin (LoginRequest(username, password))
-            responseData = call.execute(/*object : Callback<UserLoginData?> {
+                .GetLogin(LoginRequest(username, password))
+            call.enqueue(object : Callback<LoginResponse?> {
                 override fun onResponse(
-                    call: Call<UserLoginData?>?,
-                    response: Response<UserLoginData?>?
+                    call: Call<LoginResponse?>?,
+                    response: Response<LoginResponse?>?
                 ) {
-                    responseData = response?.body()
+                    responseData = response?.body()?.user
                 }
 
                 override fun onFailure(
-                    call: Call<UserLoginData?>?,
+                    call: Call<LoginResponse?>?,
                     t: Throwable?
                 ) {
                     Log.e("onFailure error", t?.message.toString())
                 }
-            }*/
-            ).body()
+            }
+            )
 
             if (responseData != null) {
 

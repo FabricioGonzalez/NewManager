@@ -6,16 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kaskin.manager.R
+import com.kaskin.manager.databinding.FragmentClientRegistrationBinding
 
 class ClientRegistrationFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ClientRegistrationFragment()
-    }
-
     private lateinit var viewModel: ClientRegistrationViewModel
+    private var _binding: FragmentClientRegistrationBinding? = null
 
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +22,16 @@ class ClientRegistrationFragment : Fragment() {
             this,
             ViewModelProvider.NewInstanceFactory()
         )[ClientRegistrationViewModel::class.java]
-        return inflater.inflate(R.layout.fragment_client_registration, container, false)
+
+        _binding = FragmentClientRegistrationBinding.inflate(inflater, container, false)
+
+        val root: View = binding.root
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

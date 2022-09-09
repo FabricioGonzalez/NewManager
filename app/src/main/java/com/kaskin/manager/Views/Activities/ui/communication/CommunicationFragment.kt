@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kaskin.manager.R
+import com.kaskin.manager.databinding.FragmentCommunicationBinding
 
 class CommunicationFragment : Fragment() {
+    private var _binding: FragmentCommunicationBinding? = null
 
-    companion object {
-        fun newInstance() = CommunicationFragment()
-    }
+    private val binding get() = _binding!!
 
     private lateinit var viewModel: CommunicationViewModel
 
@@ -24,6 +23,15 @@ class CommunicationFragment : Fragment() {
             this,
             ViewModelProvider.NewInstanceFactory()
         )[CommunicationViewModel::class.java]
-        return inflater.inflate(R.layout.fragment_communication, container, false)
+        _binding = FragmentCommunicationBinding.inflate(inflater, container, false)
+
+        val root: View = binding.root
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
