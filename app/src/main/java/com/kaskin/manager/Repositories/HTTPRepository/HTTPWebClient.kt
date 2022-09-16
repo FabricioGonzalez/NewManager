@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HTTPWebClient {
     private val retrofit = Retrofit
         .Builder()
-        /*.baseUrl("http://srvksk.dyndns.org:7383")*/
-        .baseUrl("http://192.168.1.192:5132")
+        .baseUrl("http://574a0458b586.sn.mynetname.net:7383")
+        /*.baseUrl("http://192.168.1.192:5132")*/
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
