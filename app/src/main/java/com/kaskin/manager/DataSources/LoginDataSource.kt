@@ -1,11 +1,10 @@
 package com.kaskin.manager.DataSources
 
-import android.util.Log
-import com.kaskin.manager.Models.*
+import com.kaskin.manager.Models.LoggedInUser
+import com.kaskin.manager.Models.LoginRequest
+import com.kaskin.manager.Models.Result
+import com.kaskin.manager.Models.UserLoginData
 import com.kaskin.manager.Repositories.HTTPRepository.HTTPWebClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.IOException
 
 /**
@@ -15,11 +14,12 @@ class LoginDataSource {
 
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
         try {
-            var responseData: UserLoginData? = null
+            var responseData: UserLoginData? = HTTPWebClient().loginService()
+            .GetLogin(LoginRequest(username, password)).execute().body()?.user
 
-            val call = HTTPWebClient().loginService()
+            /*val call = HTTPWebClient().loginService()
                 .GetLogin(LoginRequest(username, password))
-            call.enqueue(object : Callback<LoginResponse?> {
+            val response = call.enqueue(object : Callback<LoginResponse?> {
                 override fun onResponse(
                     call: Call<LoginResponse?>?,
                     response: Response<LoginResponse?>?
@@ -34,10 +34,9 @@ class LoginDataSource {
                     Log.e("onFailure error", t?.message.toString())
                 }
             }
-            )
+            )*/
 
             if (responseData != null) {
-
                 val fakeUser =
                     LoggedInUser(responseData?.setor.toString(), responseData?.name.toString())
                 return Result.Success(fakeUser)

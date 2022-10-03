@@ -9,7 +9,7 @@ class HTTPWebClient {
     private val retrofit = Retrofit
         .Builder()
         .baseUrl("http://574a0458b586.sn.mynetname.net:7383")
-        /*.baseUrl("http://192.168.1.192:5132")*/
+        /*.baseUrl("https://192.168.1.176:7132/v1/login")*/
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
