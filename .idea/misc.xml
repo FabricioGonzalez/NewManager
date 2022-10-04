@@ -34,11 +34,14 @@
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/activity_manager_mobile.xml" value="1.121875" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/app_bar_manager_mobile.xml" value="0.7907488986784141" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/content_manager_mobile.xml" value="1.121875" />
-        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/external_file_db_layout.xml" value="1.121875" />
+        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/external_file_db_layout.xml" value="1.5375" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_client_registration.xml" value="0.7907488986784141" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_client_visit.xml" value="0.75" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_communication.xml" value="1.121875" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_dados.xml" value="0.14229092350376535" />
+        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_database_backup.xml" value="1.4450757575757576" />
+        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_database_clean_up.xml" value="1.4450757575757576" />
+        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_database_list.xml" value="1.4450757575757576" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_home.xml" value="1.5" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_login.xml" value="1.4894894894894894" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout-small/fragment_register_user.xml" value="1.121875" />
@@ -53,12 +56,12 @@
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/content_main_activitydas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/content_manager_mobile.xml" value="1.25" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/content_teste.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/external_file_db_layout.xml" value="0.365625" />
+        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/external_file_db_layout.xml" value="0.5" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_client_registration.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_client_visit.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_client_visit2.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_communication.xml" value="0.25" />
-        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_dados.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_communication.xml" value="0.2" />
+        <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_dados.xml" value="0.25" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_database_list.xml" value="0.1996579734929457" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kaski/AndroidStudioProjects/NewManager/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />

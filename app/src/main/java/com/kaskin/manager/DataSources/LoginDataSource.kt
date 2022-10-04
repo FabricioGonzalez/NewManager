@@ -1,6 +1,5 @@
 package com.kaskin.manager.DataSources
 
-import com.google.gson.Gson
 import com.kaskin.manager.Models.LoggedInUser
 import com.kaskin.manager.Models.LoginRequest
 import com.kaskin.manager.Models.Result
@@ -15,32 +14,29 @@ class LoginDataSource {
 
     suspend fun login(username: String, password: String): Result<LoggedInUser> {
         try {
+            var responseData: UserLoginData? = HTTPWebClient().loginService()
+            .GetLogin(LoginRequest(username, password)).execute().body()?.user
 
-            val gson = Gson()
-
-            var responseData: UserLoginData? = null
-
-            val call = HTTPWebClient().loginService()
-                .GetLogin (LoginRequest(username, password))
-            responseData = call.execute(/*object : Callback<UserLoginData?> {
+            /*val call = HTTPWebClient().loginService()
+                .GetLogin(LoginRequest(username, password))
+            val response = call.enqueue(object : Callback<LoginResponse?> {
                 override fun onResponse(
-                    call: Call<UserLoginData?>?,
-                    response: Response<UserLoginData?>?
+                    call: Call<LoginResponse?>?,
+                    response: Response<LoginResponse?>?
                 ) {
-                    responseData = response?.body()
+                    responseData = response?.body()?.user
                 }
 
                 override fun onFailure(
-                    call: Call<UserLoginData?>?,
+                    call: Call<LoginResponse?>?,
                     t: Throwable?
                 ) {
                     Log.e("onFailure error", t?.message.toString())
                 }
-            }*/
-            ).body()
+            }
+            )*/
 
             if (responseData != null) {
-
                 val fakeUser =
                     LoggedInUser(responseData?.setor.toString(), responseData?.name.toString())
                 return Result.Success(fakeUser)

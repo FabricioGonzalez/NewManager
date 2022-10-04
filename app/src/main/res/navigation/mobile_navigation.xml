@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.kaskin.manager.Views.Activities.ui.home.HomeFragment"
+        android:name="com.kaskin.manager.presentation.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_client_registration"
-        android:name="com.kaskin.manager.Views.Activities.ui.client_registration.ClientRegistrationFragment"
+        android:name="com.kaskin.manager.presentation.client_registration.ClientRegistrationFragment"
         android:label="@string/menu_registro_cliente"
         tools:layout="@layout/fragment_client_registration" />
     <fragment
@@ -41,7 +41,7 @@
         tools:layout="@layout/fragment_dados" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.kaskin.manager.Views.Activities.ui.settings.Settings"
+        android:name="com.kaskin.manager.presentation.settings.Settings"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
 
@@ -55,7 +55,7 @@
     </navigation>
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.kaskin.manager.Views.Activities.ui.login.LoginFragment"
+        android:name="com.kaskin.manager.presentation.login.LoginFragment"
         android:label="@string/login"
         tools:layout="@layout/fragment_login">
         <action
