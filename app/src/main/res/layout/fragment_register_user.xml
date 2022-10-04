@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
-    tools:context=".Views.Activities.ui.register_user.RegisterUserFragment">
+    tools:context=".presentation">
 
     <TextView
         android:id="@+id/nome_vendedor"

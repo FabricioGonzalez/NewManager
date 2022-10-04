@@ -1,4 +1,4 @@
-package com.kaskin.manager.Views.Activities
+package com.kaskin.manager
 
 import android.os.Bundle
 import android.view.Menu
@@ -11,7 +11,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.kaskin.manager.R
 import com.kaskin.manager.databinding.ActivityManagerMobileBinding
 
 

@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        setHasOptionsMenu(true);
 
         val homeViewModel =
             ViewModelProvider(
@@ -50,7 +49,7 @@ class HomeFragment : Fragment() {
             homeViewModel.UpdateUser(user)
         }
 
-        var context = requireContext()
+        var context = requireActivity().applicationContext
 
         val db = Room.databaseBuilder(
             context,
