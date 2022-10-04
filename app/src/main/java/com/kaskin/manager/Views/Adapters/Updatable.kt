@@ -1,4 +1,4 @@
-package com.kaskin.manager.Contracts
+package com.kaskin.manager.Views.Adapters
 
 interface Updatable {
     fun Update();

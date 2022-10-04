@@ -35,6 +35,11 @@ class LoginFragment : Fragment() {
     ): View? {
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+
+        val toolbar =
+            requireActivity()?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        toolbar?.visibility = View.GONE
+
         return binding.root
     }
 
@@ -47,6 +52,7 @@ class LoginFragment : Fragment() {
         val passwordEditText = binding.password
         val loginButton = binding.login
         val loadingProgressBar = binding.loading
+        loadingProgressBar.visibility = View.GONE
         val signUpButton = binding.signUpButton
 
         signUpButton.setOnClickListener {

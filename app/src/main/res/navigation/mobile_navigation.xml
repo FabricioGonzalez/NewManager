@@ -26,19 +26,16 @@
         tools:layout="@layout/fragment_client_registration" />
     <fragment
         android:id="@+id/nav_supervisor"
-        android:name="com.kaskin.manager.Views.Activities.ui.supervisor.SupervisorFragment"
-        android:label="@string/menu_supervisor"
-        tools:layout="@layout/fragment_supervisor" />
+        android:name="com.kaskin.manager.presentation.supervisor.SupervisorFragment"
+        android:label="@string/menu_supervisor" />
     <fragment
         android:id="@+id/nav_communication"
-        android:name="com.kaskin.manager.Views.Activities.ui.communication.CommunicationFragment"
-        android:label="@string/menu_comunicacao"
-        tools:layout="@layout/fragment_communication" />
+        android:name="com.kaskin.manager.presentation.communication.CommunicationFragment"
+        android:label="@string/menu_comunicacao" />
     <fragment
         android:id="@+id/nav_database"
-        android:name="com.kaskin.manager.Views.Activities.ui.dados.DadosFragment"
-        android:label="@string/menu_dados"
-        tools:layout="@layout/fragment_dados" />
+        android:name="com.kaskin.manager.presentation.dados.DadosFragment"
+        android:label="@string/menu_dados" />
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.kaskin.manager.presentation.settings.Settings"
@@ -49,9 +46,8 @@
         app:startDestination="@id/visitListFragment">
         <fragment
             android:id="@+id/visitListFragment"
-            android:name="com.kaskin.manager.Views.Activities.ui.home.visitList.VisitListFragment"
-            android:label="@string/menu_visit_list"
-            tools:layout="@layout/fragment_visit_list" />
+            android:name="com.kaskin.manager.presentation.home.visitList.VisitListFragment"
+            android:label="@string/menu_visit_list" />
     </navigation>
     <fragment
         android:id="@+id/nav_login"

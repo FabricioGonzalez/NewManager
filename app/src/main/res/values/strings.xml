@@ -54,4 +54,6 @@
     <string name="text_senha_vendedor">Password</string>
     <string name="text_senha_confirm_vendedor">Confirm Password</string>
     <string name="button_register_user">Send</string>
+    <string name="setor_text">Setor</string>
+    <string name="database_not_found">Database not Found</string>
 </resources>

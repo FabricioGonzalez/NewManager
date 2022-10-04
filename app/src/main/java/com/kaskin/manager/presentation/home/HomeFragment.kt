@@ -4,43 +4,59 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.room.Room
 import com.kaskin.manager.Controllers.ConnectionChecker
 import com.kaskin.manager.Models.LoggedInUserView
 import com.kaskin.manager.R
-import com.kaskin.manager.data.database.employee.EmployeeDatabase
 import com.kaskin.manager.databinding.FragmentHomeBinding
+import com.kaskin.manager.domain.employee.entities.Employee
 import com.kaskin.manager.presentation.home.viewmodels.HomeViewModel
+import com.kaskin.manager.utils.Resource
+import kotlinx.coroutines.launch
 
-class HomeFragment : Fragment() {
+class HomeFragment() : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private val homeViewModel by activityViewModels<HomeViewModel>()
 
     private lateinit var connectionChecker: ConnectionChecker
 
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        val homeViewModel =
-            ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[HomeViewModel::class.java]
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        setupObservers()
+
+/*        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val toolbar =
+                requireActivity()?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar);
+            toolbar?.inflateMenu(R.menu.main_menu)
+            toolbar?.setOnMenuItemClickListener {
+                val navController =
+                    requireActivity().findNavController(R.id.nav_host_fragment_content_manager_mobile)
+                // Handle item selection
+                when (it.itemId) {
+                    R.id.mnuVendas -> {
+                        navController.navigate(R.id.action_nav_home_to_HomeNavigation)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        } else {*/
+        setHasOptionsMenu(true)
+        /* }*/
 
         if (arguments != null) {
             // The getPrivacyPolicyLink() method will be created automatically.
@@ -49,46 +65,75 @@ class HomeFragment : Fragment() {
             homeViewModel.UpdateUser(user)
         }
 
-        var context = requireActivity().applicationContext
-
-        val db = Room.databaseBuilder(
-            context,
-            EmployeeDatabase::class.java,
-            "manager.db"
-        ).build()
-
-        homeViewModel.GetEmployeeData(
-            db
-        )
-
-        homeViewModel.employee.observe(
-            viewLifecycleOwner
-        ) {
-            root.findViewById<TextView>(R.id.database_info).text = it.nome
-        }
-
-        val header = activity?.findViewById<TextView>(R.id.header_view_user)
-        val item = activity?.findViewById<TextView>(R.id.header_view_code)
-
-        header?.text = homeViewModel.user.value?.displayName
-        item?.text = homeViewModel.user.value?.setor
-
         UpdateConnectionState(root)
-/*        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }*/
 
         return root
     }
 
-    fun GetDatabaseData() {
 
+    fun setupObservers() {
+        lifecycleScope.launch {
+            homeViewModel.employee.collect { result ->
+                when (result) {
+                    is Resource.Success<Employee> -> {
+                        if (result.data?.setor != 0) {
+                            binding.databaseInfo
+                                .text =
+                                "${getString(R.string.setor_text)} - ${result.data?.setor} - ${result.data?.nome}"
+
+                        } else
+                            binding.databaseInfo
+                                .text =
+                                getString(R.string.database_not_found)
+                    }
+
+                    is Resource.Error -> {
+                        Toast
+                            .makeText(
+                                requireContext(),
+                                result.message,
+                                Toast.LENGTH_LONG
+                            )
+                            .show()
+                    }
+                    is Resource.Loading -> {
+                        binding.homePageLoadingBar?.visibility = View.VISIBLE
+                    }
+                }
+            }
+
+            homeViewModel.user.collect { result ->
+                when (result) {
+                    is Resource.Success<LoggedInUserView> -> {
+                        result.data.let { logged ->
+                            requireActivity()?.findViewById<TextView>(R.id.header_view_user)?.text =
+                                logged?.displayName
+                            requireActivity()?.findViewById<TextView>(R.id.header_view_code)?.text =
+                                logged?.setor
+                        }
+                    }
+                    is Resource.Error -> {
+                        Toast
+                            .makeText(
+                                requireContext(),
+                                result.message,
+                                Toast.LENGTH_LONG
+                            )
+                            .show()
+                    }
+                    is Resource.Loading -> {
+                        binding.homePageLoadingBar?.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.main_menu, menu)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

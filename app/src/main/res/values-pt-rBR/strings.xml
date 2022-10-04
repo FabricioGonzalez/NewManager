@@ -6,6 +6,8 @@
     <string name="text_vendas">Clientes</string>
     <string name="text_resumo">Resumo</string>
     <string name="text_consultas">Consultas</string>
+    <string name="nav_header_title"></string>
+    <string name="nav_header_subtitle"></string>
     <string name="text_item_controle">Itens de Controle</string>
     <string name="text_tabela_preco">Tabela de Preços</string>
     <string name="text_acao_mercado">Ações de Mercado</string>
@@ -32,6 +34,7 @@
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Entrar</string>
     <string name="action_sign_up">Criar Usuario</string>
+    <string name="setor_text">Setor</string>
     <string name="welcome">Bem Vindo</string>
     <string name="invalid_username">Setor não encontrado</string>
     <string name="invalid_password">Senha deve conter mais de 5 Caracteres</string>
@@ -42,4 +45,5 @@
     <string name="text_senha_vendedor">Senha</string>
     <string name="text_senha_confirm_vendedor">Confirmar Senha</string>
     <string name="button_register_user">Enviar</string>
+    <string name="database_not_found">Banco de dados não encontrado</string>
 </resources>

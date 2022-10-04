@@ -1,9 +1,11 @@
 package com.kaskin.manager
 
+import android.Manifest
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,8 +14,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.kaskin.manager.databinding.ActivityManagerMobileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ManagerMobile : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -26,6 +29,17 @@ class ManagerMobile : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarManagerMobile.toolbar)
+
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.MANAGE_MEDIA
+            ),
+            1
+        )
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView

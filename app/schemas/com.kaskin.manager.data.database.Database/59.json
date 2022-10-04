@@ -1,0 +1,171 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 59,
+    "identityHash": "a219824123cff449139e7edbd026ac67",
+    "entities": [
+      {
+        "tableName": "IMOBEPG",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `CODMTCEPG` INTEGER NOT NULL DEFAULT 0, `NOMEPG` TEXT NOT NULL, `DESAPLEPG` TEXT, `NUMTLFEPG` TEXT, `NUMCELEPG` TEXT, `CODMTCEPGRPS` INTEGER DEFAULT 0, `DESSVRFTP` TEXT, `DESUSRFTP` TEXT, `DESPWDFTP` TEXT, `DESSVRWEB` TEXT, `DESUSRWEB` TEXT, `DESPWDWEB` TEXT, `DESSVRPOP` TEXT, `DESSVRSMTP` TEXT, `DESUSRPOP` TEXT, `DESPWDPO` TEXT, `IGIRO` REAL NOT NULL DEFAULT 0)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idFuncionario",
+            "columnName": "CODMTCEPG",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "nomeFuncionario",
+            "columnName": "NOMEPG",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apelidoFuncionario",
+            "columnName": "DESAPLEPG",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "telefoneFuncionario",
+            "columnName": "NUMTLFEPG",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "celularFuncionario",
+            "columnName": "NUMCELEPG",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "CODMTCEPGRPS",
+            "columnName": "CODMTCEPGRPS",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "DESSVRFTP",
+            "columnName": "DESSVRFTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESUSRFTP",
+            "columnName": "DESUSRFTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESPWDFTP",
+            "columnName": "DESPWDFTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESSVRWEB",
+            "columnName": "DESSVRWEB",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESUSRWEB",
+            "columnName": "DESUSRWEB",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESPWDWEB",
+            "columnName": "DESPWDWEB",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESSVRPOP",
+            "columnName": "DESSVRPOP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESSVRSMTP",
+            "columnName": "DESSVRSMTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESUSRPOP",
+            "columnName": "DESUSRPOP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESPWDPO",
+            "columnName": "DESPWDPO",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "IGIRO",
+            "columnName": "IGIRO",
+            "affinity": "REAL",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "IMOBVST",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `CODVST` INTEGER NOT NULL, `DESVST` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dayNumber",
+            "columnName": "CODVST",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dayName",
+            "columnName": "DESVST",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a219824123cff449139e7edbd026ac67')"
+    ]
+  }
+}

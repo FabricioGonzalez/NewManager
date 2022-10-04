@@ -6,6 +6,8 @@
     <string name="text_vendas">Clients</string>
     <string name="text_resumo">Summary</string>
     <string name="text_consultas">Queries</string>
+    <string name="nav_header_title"></string>
+    <string name="nav_header_subtitle"></string>
     <string name="text_item_controle">Control Items</string>
     <string name="text_tabela_preco">Price Tables</string>
     <string name="text_acao_mercado">Market Actions</string>
@@ -27,6 +29,7 @@
     <string name="menu_registro_cliente">Client Sign Up</string>
     <string name="menu_comunicacao">Communication</string>
     <string name="menu_dados">Database</string>
+    <string name="setor_text">Id</string>
     <string name="menu_settings">Settings</string>
     <string name="prompt_email">Id</string>
     <string name="prompt_password">Password</string>
@@ -42,4 +45,5 @@
     <string name="text_senha_vendedor">Password</string>
     <string name="text_senha_confirm_vendedor">Confirm Password</string>
     <string name="button_register_user">Send</string>
+    <string name="database_not_found">Database not Found</string>
 </resources>
