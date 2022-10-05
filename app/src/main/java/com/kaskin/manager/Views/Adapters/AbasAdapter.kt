@@ -9,8 +9,10 @@ class AbasAdapter(activity: FragmentActivity?) : FragmentStateAdapter(activity!!
     private val titles: MutableList<String> = ArrayList()
 
     fun add(fragment: Fragment, tabTitle: String) {
-        fragments.add(fragment)
-        titles.add(tabTitle)
+        if (!fragments.contains(fragment))
+            fragments.add(fragment)
+        if (!titles.contains(tabTitle))
+            titles.add(tabTitle)
     }
 
     fun clear() {
@@ -26,8 +28,9 @@ class AbasAdapter(activity: FragmentActivity?) : FragmentStateAdapter(activity!!
     }
 
     fun getPageTitle(position: Int): String? {
-
-        return titles[position]
+        if (position != titles.size)
+            return titles[position]
+        return null
     }
 
     override fun getItemCount(): Int {

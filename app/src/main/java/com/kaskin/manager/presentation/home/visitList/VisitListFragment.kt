@@ -36,15 +36,18 @@ class VisitListFragment : Fragment() {
         _binding = FragmentVisitListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        setupObservers()
-
         adapter = AbasAdapter(requireActivity())
+        adapter.clear()
+        
+        setupObservers()
 
         val viewPager = binding.abasViewPager
         viewPager.adapter = adapter
         val tabLayout = binding.abas
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = adapter.getPageTitle(position)
+            val item = adapter.getPageTitle(position)
+            if (item != null)
+                tab.text = adapter.getPageTitle(position)
         }.attach()
 
         return root
