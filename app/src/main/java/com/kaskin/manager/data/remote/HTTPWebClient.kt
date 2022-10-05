@@ -1,7 +1,7 @@
-package com.kaskin.manager.Repositories.HTTPRepository
+package com.kaskin.manager.data.remote
 
-import com.kaskin.manager.Repositories.HTTPRepository.Contracts.DowloadService
-import com.kaskin.manager.Repositories.HTTPRepository.Contracts.LoginService
+import com.kaskin.manager.data.remote.login.LoginService
+import com.kaskin.manager.data.remote.mobile_database.DowloadService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,7 +16,7 @@ class HTTPWebClient {
     fun loginService(): LoginService {
         return retrofit.create(LoginService::class.java)
     }
-    fun downloadService():DowloadService {
+    fun downloadService(): DowloadService {
         return retrofit.create(DowloadService::class.java)
     }
 

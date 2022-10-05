@@ -4,7 +4,7 @@ import com.kaskin.manager.Models.LoggedInUser
 import com.kaskin.manager.Models.LoginRequest
 import com.kaskin.manager.Models.Result
 import com.kaskin.manager.Models.UserLoginData
-import com.kaskin.manager.Repositories.HTTPRepository.HTTPWebClient
+import com.kaskin.manager.data.remote.HTTPWebClient
 import java.io.IOException
 
 /**

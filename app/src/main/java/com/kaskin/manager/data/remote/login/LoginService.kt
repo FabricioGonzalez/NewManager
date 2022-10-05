@@ -1,4 +1,4 @@
-package com.kaskin.manager.Repositories.HTTPRepository.Contracts
+package com.kaskin.manager.data.remote.login
 
 import com.kaskin.manager.Models.LoginRequest
 import com.kaskin.manager.Models.LoginResponse
