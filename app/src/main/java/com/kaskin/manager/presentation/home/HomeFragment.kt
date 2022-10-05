@@ -5,8 +5,11 @@ import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.kaskin.manager.Controllers.ConnectionChecker
@@ -37,26 +40,7 @@ class HomeFragment() : Fragment() {
         val root: View = binding.root
 
         setupObservers()
-
-/*        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val toolbar =
-                requireActivity()?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar);
-            toolbar?.inflateMenu(R.menu.main_menu)
-            toolbar?.setOnMenuItemClickListener {
-                val navController =
-                    requireActivity().findNavController(R.id.nav_host_fragment_content_manager_mobile)
-                // Handle item selection
-                when (it.itemId) {
-                    R.id.mnuVendas -> {
-                        navController.navigate(R.id.action_nav_home_to_HomeNavigation)
-                        true
-                    }
-                    else -> false
-                }
-            }
-        } else {*/
-        setHasOptionsMenu(true)
-        /* }*/
+        menuSetup()
 
         if (arguments != null) {
             // The getPrivacyPolicyLink() method will be created automatically.
@@ -70,6 +54,29 @@ class HomeFragment() : Fragment() {
         return root
     }
 
+    private fun menuSetup() {
+        val menuHost: MenuHost = requireActivity()
+
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.main_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                val navController =
+                    requireActivity().findNavController(R.id.nav_host_fragment_content_manager_mobile)
+                // Handle item selection
+                return when (menuItem.itemId) {
+                    R.id.mnuVendas -> {
+                        navController.navigate(R.id.action_nav_home_to_HomeNavigation)
+                        return true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+    }
 
     fun setupObservers() {
         lifecycleScope.launch {
@@ -86,7 +93,6 @@ class HomeFragment() : Fragment() {
                                 .text =
                                 getString(R.string.database_not_found)
                     }
-
                     is Resource.Error -> {
                         Toast
                             .makeText(
@@ -130,7 +136,7 @@ class HomeFragment() : Fragment() {
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.main_menu, menu)
 
@@ -147,7 +153,7 @@ class HomeFragment() : Fragment() {
             }
             else -> false
         }
-    }
+    }*/
 
     private fun UpdateConnectionState(root: View) {
         connectionChecker = ConnectionChecker(root.context)

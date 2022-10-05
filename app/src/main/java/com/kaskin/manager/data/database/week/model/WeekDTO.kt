@@ -11,7 +11,7 @@ data class WeekDTO(
     @ColumnInfo(name = "id")
     val id: Int?,
 
-    @ColumnInfo(name = "CODVST")
+    @ColumnInfo(name = "CODVST", defaultValue = "0")
     val dayNumber: Int,
 
     @ColumnInfo(name = "DESVST")

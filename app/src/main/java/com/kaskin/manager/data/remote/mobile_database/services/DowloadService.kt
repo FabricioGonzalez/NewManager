@@ -1,4 +1,4 @@
-package com.kaskin.manager.data.remote.mobile_database
+package com.kaskin.manager.data.remote.mobile_database.services
 
 import retrofit2.Call
 import retrofit2.http.Body

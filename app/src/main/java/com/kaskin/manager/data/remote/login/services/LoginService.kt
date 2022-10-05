@@ -1,4 +1,4 @@
-package com.kaskin.manager.data.remote.login
+package com.kaskin.manager.data.remote.login.services
 
 import com.kaskin.manager.Models.LoginRequest
 import com.kaskin.manager.Models.LoginResponse

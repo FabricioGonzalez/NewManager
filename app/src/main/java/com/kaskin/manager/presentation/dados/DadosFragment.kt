@@ -22,6 +22,14 @@ class DadosFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+    private val map: MutableMap<String, Fragment> =
+        mutableMapOf(
+            Pair("Bancos de Dados", DatabaseListFragment()),
+            Pair("Limpeza de Banco de Dados", DatabaseCleanUpFragment()),
+            Pair("Backup de Banco de Dados", DatabaseBackupFragment())
+        )
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,10 +46,9 @@ class DadosFragment : Fragment() {
         val root: View = binding.root
 
         val adapter = AbasAdapter(requireActivity())
-
-        adapter.adicionar(DatabaseListFragment(), "Bancos de Dados")
-        adapter.adicionar(DatabaseCleanUpFragment(), "Limpeza de Banco de Dados")
-        adapter.adicionar(DatabaseBackupFragment(), "Backup de Banco de Dados")
+        map.forEach { item ->
+            adapter.add(item.value, item.key)
+        }
 
         val viewPager = binding.abasViewPager
         viewPager?.adapter = adapter

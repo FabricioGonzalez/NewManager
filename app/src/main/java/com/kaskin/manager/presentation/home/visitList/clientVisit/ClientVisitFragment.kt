@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.kaskin.manager.databinding.FragmentClientVisitBinding
 
 class ClientVisitFragment : Fragment() {
+
+    private val clientVisitViewModel by activityViewModels<ClientVisitViewModel>()
 
     private var _binding: FragmentClientVisitBinding? = null
 
@@ -17,9 +19,8 @@ class ClientVisitFragment : Fragment() {
 
     var day: String = "1"
 
-    fun SetDay(day: String): ClientVisitFragment {
+    fun SetDay(day: String) {
         this.day = day
-        return this
     }
 
     override fun onCreateView(
@@ -27,12 +28,7 @@ class ClientVisitFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val clientVisitViewModel =
-            ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            ).get(ClientVisitViewModel::class.java)
-
+       
         _binding = FragmentClientVisitBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

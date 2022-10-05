@@ -3,17 +3,23 @@ package com.kaskin.manager.presentation.login.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kaskin.manager.Models.LoggedInUserView
 import com.kaskin.manager.Models.LoginFormState
 import com.kaskin.manager.Models.LoginResult
-import com.kaskin.manager.Models.Result
 import com.kaskin.manager.R
-import com.kaskin.manager.Repositories.LoginRepository
+import com.kaskin.manager.domain.login.entities.User
+import com.kaskin.manager.domain.login.usecases.LogInUsecase
+import com.kaskin.manager.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val logInUsecase: LogInUsecase
+) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -22,25 +28,41 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     val loginResult: LiveData<LoginResult> = _loginResult
 
     fun login(username: String, password: String) {
-        // can be launched in a separate asynchronous job
-        GlobalScope.launch(Dispatchers.IO) {
-            val result = loginRepository.login(username, password)
-
-            if (result is Result.Success) {
-                _loginResult.postValue(
-                    LoginResult(
-                        success = LoggedInUserView(
-                            displayName = result.data.displayName,
-                            result.data.userId
+        viewModelScope.launch(Dispatchers.IO) {
+            logInUsecase(username, password).collect { result ->
+                when (result) {
+                    is Resource.Error<User> -> {
+                        _loginResult.postValue(
+                            LoginResult(
+                                success = null,
+                                error = R.string.login_failed,
+                                isLoading = false
+                            )
                         )
-                    )
-                )
-            }
-            else {
-                _loginResult.postValue(LoginResult(error = R.string.login_failed))
+                    }
+                    is Resource.Success<User> -> {
+                        _loginResult.postValue(
+                            LoginResult(
+                                success = LoggedInUserView(
+                                    displayName = result.data!!.name,
+                                    setor = result.data.setor.toString()
+                                ), error = null,
+                                isLoading = false
+                            )
+                        )
+                    }
+                    is Resource.Loading<User> -> {
+                        _loginResult.postValue(
+                            LoginResult(
+                                error = null,
+                                success = null,
+                                isLoading = true
+                            )
+                        )
+                    }
+                }
             }
         }
-
     }
 
     fun loginDataChanged(username: String, password: String) {
@@ -60,6 +82,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length >= 3
+        return password.length >= 5
     }
 }

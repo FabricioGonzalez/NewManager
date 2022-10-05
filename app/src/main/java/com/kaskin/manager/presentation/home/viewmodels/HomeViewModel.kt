@@ -9,6 +9,7 @@ import com.kaskin.manager.domain.employee.entities.Employee
 import com.kaskin.manager.domain.employee.usecases.GetEmployeeUsecase
 import com.kaskin.manager.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -31,23 +32,29 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getEmployeeData() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getEmployee().catch { e ->
-                _employee.value =
-                    Resource.Error<Employee>(message = e.localizedMessage ?: "Error Unexpected")
+                _employee.emit(
+                    Resource.Error<Employee>(
+                        message = e.localizedMessage ?: "Error Unexpected"
+                    )
+                )
             }.collect { result ->
                 when (result) {
                     is Resource.Error -> {
-                        _employee.value =
-                            Resource.Error<Employee>(message = result.message, data = result.data)
+                        _employee.emit(
+                            Resource.Error<Employee>(
+                                message = result.message,
+                                data = result.data
+                            )
+                        )
                     }
                     is Resource.Success -> {
-                        _employee.value =
-                            Resource.Success<Employee>(data = result.data)
+                        _employee.emit(Resource.Success<Employee>(data = result.data))
                     }
                     is Resource.Loading -> {
-                        _employee.value =
-                            Resource.Loading<Employee>()
+                        _employee.emit(Resource.Loading<Employee>())
+
                     }
                 }
             }

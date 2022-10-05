@@ -5,5 +5,6 @@ package com.kaskin.manager.Models
  */
 data class LoginResult(
     val success: LoggedInUserView? = null,
-    val error: Int? = null
+    val error: Int? = null,
+    val isLoading: Boolean = false
 )

@@ -6,21 +6,28 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class AbasAdapter(activity: FragmentActivity?) : FragmentStateAdapter(activity!!) {
     private val fragments: MutableList<Fragment> = ArrayList()
-    private val titulos: MutableList<String> = ArrayList()
+    private val titles: MutableList<String> = ArrayList()
 
-    fun adicionar(fragment: Fragment, tituloAba: String) {
+    fun add(fragment: Fragment, tabTitle: String) {
         fragments.add(fragment)
-        titulos.add(tituloAba)
+        titles.add(tabTitle)
     }
+
+    fun clear() {
+        fragments.clear()
+        titles.clear()
+    }
+
     fun refreshFragment(index: Int) {
-        if(fragments[index] is Updatable)
+        if (fragments[index] is Updatable)
             (fragments[index] as Updatable).Update()
 
         notifyItemChanged(index)
     }
+
     fun getPageTitle(position: Int): String? {
 
-        return titulos[position]
+        return titles[position]
     }
 
     override fun getItemCount(): Int {
