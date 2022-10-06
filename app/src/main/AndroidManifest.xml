@@ -31,14 +31,14 @@ androidx.compose.ui.geometry" />
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NewManager"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name="com.kaskin.manager.ManagerMobile"
             android:exported="true"
             android:label="@string/title_activity_manager_mobile"
-            android:theme="@style/Theme.NewManager.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

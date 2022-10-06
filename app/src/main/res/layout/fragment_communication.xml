@@ -5,7 +5,7 @@
     android:id="@+id/communication_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Activities.ui.communication.CommunicationFragment" >
+    tools:context=".presentation.communication.CommunicationFragment" >
 
     <ImageButton
         android:id="@+id/imageButton"

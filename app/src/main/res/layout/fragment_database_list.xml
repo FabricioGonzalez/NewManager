@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Activities.ui.dados.database_list.DatabaseListFragment">
+    tools:context=".presentation.dados.database_list.DatabaseListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dbList"

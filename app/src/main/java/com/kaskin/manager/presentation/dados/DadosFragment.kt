@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kaskin.manager.Views.Adapters.AbasAdapter
 import com.kaskin.manager.databinding.FragmentDadosBinding
@@ -21,6 +22,20 @@ class DadosFragment : Fragment() {
     private var _binding: FragmentDadosBinding? = null
 
     private val binding get() = _binding!!
+
+    private val viewOnPageChangeCallback: OnPageChangeCallback = object :
+        ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            if (position == 0) {
+
+            } else if (position == 1) {
+                // you are on the second page
+            } else if (position == 2) {
+                // you are on the third page
+            }
+            super.onPageSelected(position)
+        }
+    }
 
     private val map: MutableMap<String, Fragment> =
         mutableMapOf(
@@ -52,19 +67,8 @@ class DadosFragment : Fragment() {
 
         val viewPager = binding.abasViewPager
         viewPager?.adapter = adapter
-
-        viewPager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                if (position == 0) {
-                    adapter.refreshFragment(0)
-                } /*else if (position == 1) {
-                    adapter.refreshFragment(1)
-                } else if (position == 2) {
-                    adapter.refreshFragment(2)
-                }*/
-                super.onPageSelected(position)
-            }
-        })
+        
+        viewPager?.registerOnPageChangeCallback(viewOnPageChangeCallback)
 
         val tabLayout = binding.abas
         TabLayoutMediator(tabLayout!!, viewPager!!) { tab, position ->
@@ -76,18 +80,6 @@ class DadosFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        binding.abasViewPager?.unregisterOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                if (position == 0) {
-
-                } else if (position == 1) {
-                    // you are on the second page
-                } else if (position == 2) {
-                    // you are on the third page
-                }
-                super.onPageSelected(position)
-            }
-        })
+        binding.abasViewPager?.unregisterOnPageChangeCallback(viewOnPageChangeCallback)
     }
 }

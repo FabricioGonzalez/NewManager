@@ -11,10 +11,15 @@ import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class ClientVisitViewModel @Inject constructor() : ViewModel() {
+class ClientVisitViewModel @Inject constructor(
 
-    fun UpdateDay(day: String) {
-        _text.value = "This is dia $day Fragment"
+) : ViewModel() {
+
+    private var day: Int = 0
+
+    fun changeDay(day: Int) {
+        this.day = day
+        _text.value = "This is dia $day"
     }
 
     private val _clients =
@@ -22,8 +27,7 @@ class ClientVisitViewModel @Inject constructor() : ViewModel() {
     val clients: StateFlow<Resource<List<Client>>> = _clients
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dia empty Fragment"
+        value = "This is dia $day"
     }
-
     val text: LiveData<String> = _text
 }

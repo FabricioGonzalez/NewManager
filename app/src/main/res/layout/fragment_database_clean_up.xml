@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Activities.ui.dados.database_clean_up.DatabaseCleanUpFragment">
+    tools:context=".presentation.dados.database_clean_up.DatabaseCleanUpFragment">
 
     <TextView
         android:layout_width="match_parent"

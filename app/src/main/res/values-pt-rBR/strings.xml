@@ -40,6 +40,8 @@
     <string name="invalid_password">Senha deve conter mais de 5 Caracteres</string>
     <string name="login_failed">Falha no login</string>
     <string name="download_button">Baixar</string>
+
+    <string name="register_user_title">Informações</string>
     <string name="text_nome_vendedor">Nome Completo</string>
     <string name="text_setor_vendedor">Setor</string>
     <string name="text_senha_vendedor">Senha</string>
