@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -12,12 +13,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.kaskin.manager.Controllers.ConnectionChecker
-import com.kaskin.manager.Models.LoggedInUserView
 import com.kaskin.manager.R
 import com.kaskin.manager.databinding.FragmentHomeBinding
 import com.kaskin.manager.domain.employee.entities.Employee
 import com.kaskin.manager.presentation.home.viewmodels.HomeViewModel
+import com.kaskin.manager.presentation.login.states.LoggedInUserView
+import com.kaskin.manager.utils.ConnectionChecker
 import com.kaskin.manager.utils.Resource
 import kotlinx.coroutines.launch
 
@@ -35,6 +36,8 @@ class HomeFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+
+        requireActivity().findViewById<Toolbar>(R.id.toolbar).visibility = View.VISIBLE
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -68,7 +71,13 @@ class HomeFragment() : Fragment() {
                 // Handle item selection
                 return when (menuItem.itemId) {
                     R.id.mnuVendas -> {
-                        navController.navigate(R.id.action_nav_home_to_HomeNavigation)
+                        val bundle = Bundle()
+                        bundle.putSerializable(
+                            "USER",
+                            homeViewModel.user.value.data
+                        ) // Serializable Object
+
+                        navController?.navigate(R.id.action_nav_home_to_HomeNavigation, bundle)
                         return true
                     }
                     else -> false

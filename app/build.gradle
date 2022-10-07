@@ -7,6 +7,20 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\ti\\Desktop\\NewManager\\key\\appKeyStore.jks')
+            storePassword 'kaskin@2022'
+            keyAlias 'appKey'
+            keyPassword 'kaskin@2022'
+        }
+        release {
+            storeFile file('C:\\Users\\ti\\Desktop\\NewManager\\key\\appKeyStore.jks')
+            storePassword 'kaskin@2022'
+            keyAlias 'appKey'
+            keyPassword 'kaskin@2022'
+        }
+    }
     compileSdk 33
 
     defaultConfig {

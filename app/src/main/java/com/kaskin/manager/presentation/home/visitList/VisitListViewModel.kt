@@ -1,5 +1,6 @@
 package com.kaskin.manager.presentation.home.visitList
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kaskin.manager.domain.week.entities.WeekDay
@@ -31,6 +32,7 @@ class VisitListViewModel @Inject constructor(
                         message = e.localizedMessage ?: "Error Unexpected"
                     )
                 )
+                Log.e("AppError", "getWeekDays: ${e.message}", )
             }.collect { result ->
                 when (result) {
                     is Resource.Loading -> {
@@ -43,6 +45,7 @@ class VisitListViewModel @Inject constructor(
                                 message = result.message
                             )
                         )
+                        Log.e("AppError", "getWeekDays: ${result.message}", )
                     }
                     is Resource.Success -> {
                         _weekDays.emit(Resource.Success(data = result.data))

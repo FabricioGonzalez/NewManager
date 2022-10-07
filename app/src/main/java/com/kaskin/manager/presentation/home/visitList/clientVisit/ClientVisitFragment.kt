@@ -6,25 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.kaskin.manager.Views.Adapters.Updatable
+import androidx.fragment.app.viewModels
 import com.kaskin.manager.databinding.FragmentClientVisitBinding
+import com.kaskin.manager.presentation.adapters.Updatable
+import javax.inject.Inject
 
 class ClientVisitFragment(
     private val day: Int,
+    private val setor: Int,
 ) : Fragment(), Updatable {
-
-    // Creating viewmodel here with
-    // the help of kotlin delegate property "by"
-/*
-    private val clientVisitViewModel: ClientVisitViewModel by activityViewModels(
-        factoryProducer = { ViewModelProvider.NewInstanceFactory() }
-    )
-*/
 
     private var _binding: FragmentClientVisitBinding? = null
 
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var myViewModelAssistedFactory: ClientVisitViewModel.Factory
+
+    // Initialize the ViewModel using ViewModelProvider.Factory
+    private val clientVisitViewModel: ClientVisitViewModel by viewModels {
+        ClientVisitViewModel.provideFactory(
+            myViewModelAssistedFactory, day
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,13 +38,14 @@ class ClientVisitFragment(
         _binding = FragmentClientVisitBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val clientVisitViewModel =
-            ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[ClientVisitViewModel::class.java]
+/*
+        val factory = EntryPointAccessors.fromActivity(
+            requireActivity() as Activity,
+            ManagerMobile.ViewModelFactoryProvider::class.java
+        ).clientVisitViewModel()
+*/
 
-        clientVisitViewModel.changeDay(day = day)
+        clientVisitViewModel.changeDay()
 
         val textView: TextView = binding.texto
         clientVisitViewModel.text.observe(viewLifecycleOwner) {
@@ -56,6 +61,8 @@ class ClientVisitFragment(
     }
 
     override fun Update() {
-
+        if (clientVisitViewModel != null) {
+            clientVisitViewModel.getClients(setor)
+        }
     }
 }

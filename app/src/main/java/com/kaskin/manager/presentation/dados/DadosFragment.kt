@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kaskin.manager.Views.Adapters.AbasAdapter
+import com.kaskin.manager.presentation.adapters.AbasAdapter
 import com.kaskin.manager.databinding.FragmentDadosBinding
 import com.kaskin.manager.presentation.dados.database_backup.DatabaseBackupFragment
 import com.kaskin.manager.presentation.dados.database_clean_up.DatabaseCleanUpFragment

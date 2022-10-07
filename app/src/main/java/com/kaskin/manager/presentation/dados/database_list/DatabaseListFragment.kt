@@ -14,8 +14,8 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kaskin.manager.Views.Adapters.ExternalFileDbAdapter
-import com.kaskin.manager.Views.Adapters.Updatable
+import com.kaskin.manager.presentation.adapters.ExternalFileDbAdapter
+import com.kaskin.manager.presentation.adapters.Updatable
 import com.kaskin.manager.databinding.FragmentDatabaseListBinding
 
 const val PICK_PDF_FILE = 2

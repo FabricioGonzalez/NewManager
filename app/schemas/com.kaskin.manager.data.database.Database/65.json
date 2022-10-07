@@ -1,0 +1,530 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 65,
+    "identityHash": "6c9520b1db2c36466a2a8d90d5591e10",
+    "entities": [
+      {
+        "tableName": "IMOBEPG",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `CODMTCEPG` INTEGER NOT NULL DEFAULT 0, `NOMEPG` TEXT NOT NULL, `DESAPLEPG` TEXT, `NUMTLFEPG` TEXT, `NUMCELEPG` TEXT, `CODMTCEPGRPS` INTEGER DEFAULT 0, `DESSVRFTP` TEXT, `DESUSRFTP` TEXT, `DESPWDFTP` TEXT, `DESSVRWEB` TEXT, `DESUSRWEB` TEXT, `DESPWDWEB` TEXT, `DESSVRPOP` TEXT, `DESSVRSMTP` TEXT, `DESUSRPOP` TEXT, `DESPWDPO` TEXT, `IGIRO` REAL NOT NULL DEFAULT 0)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idFuncionario",
+            "columnName": "CODMTCEPG",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "nomeFuncionario",
+            "columnName": "NOMEPG",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apelidoFuncionario",
+            "columnName": "DESAPLEPG",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "telefoneFuncionario",
+            "columnName": "NUMTLFEPG",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "celularFuncionario",
+            "columnName": "NUMCELEPG",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "CODMTCEPGRPS",
+            "columnName": "CODMTCEPGRPS",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "DESSVRFTP",
+            "columnName": "DESSVRFTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESUSRFTP",
+            "columnName": "DESUSRFTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESPWDFTP",
+            "columnName": "DESPWDFTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESSVRWEB",
+            "columnName": "DESSVRWEB",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESUSRWEB",
+            "columnName": "DESUSRWEB",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESPWDWEB",
+            "columnName": "DESPWDWEB",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESSVRPOP",
+            "columnName": "DESSVRPOP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESSVRSMTP",
+            "columnName": "DESSVRSMTP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESUSRPOP",
+            "columnName": "DESUSRPOP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESPWDPO",
+            "columnName": "DESPWDPO",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "IGIRO",
+            "columnName": "IGIRO",
+            "affinity": "REAL",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "IMOBVST",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `CODVST` INTEGER NOT NULL DEFAULT 0, `DESVST` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dayNumber",
+            "columnName": "CODVST",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "dayName",
+            "columnName": "DESVST",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "IMOBCLT",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `CODCLT` INTEGER NOT NULL DEFAULT 0, `NOMRAZSCLCLT` TEXT NOT NULL, `NOMFTSCLT` TEXT, `NUMCPFCLT` TEXT, `NUMCGCCLT` TEXT, `NUMICCETACLT` TEXT, `VALSLDCLT` REAL DEFAULT 0.0, `VALLMTCDTCLT` REAL DEFAULT 0.0, `DATCADCLT` TEXT, `BOLBLTCLT` INTEGER DEFAULT 0, `EMLCLT` TEXT, `LATCLT` REAL DEFAULT 0.0, `LONCLT` REAL DEFAULT 0.0, `CLTLCK` INTEGER DEFAULT 0, `CODTRT` INTEGER DEFAULT 0, `CODSTR` INTEGER DEFAULT 0, `CODROT` INTEGER DEFAULT 0, `CODCTICLT` INTEGER DEFAULT 0, `CODTBLPRCCLT` INTEGER DEFAULT 0, `CODRTOCLT` INTEGER DEFAULT 0, `BOLFRZPPR` INTEGER DEFAULT 0, `VSTCLT` INTEGER DEFAULT 0, `SEQVST` INTEGER DEFAULT 0, `CODFRMPAGPDR` INTEGER DEFAULT 0, `DESOBSCLT` TEXT, `CODEPGRSPCAD` INTEGER DEFAULT 0, `DATITVCLT` TEXT, `DESEDRCLT` TEXT, `NUMEDRCLT` TEXT, `DESBRO` TEXT, `DESCDD` TEXT, `CODUF_` TEXT, `NUMCEPEDRCLT` TEXT, `QTDPTR` INTEGER DEFAULT 0, `GROMEDMES` REAL DEFAULT 0.0, `GROMESTRI` REAL DEFAULT 0.0, `BOLINDCLTPOS` TEXT, `BOLCLTAFD` INTEGER NOT NULL DEFAULT 0, `BOLINDCLTIBN` INTEGER NOT NULL DEFAULT 0, `BOLVNDLCK` INTEGER NOT NULL DEFAULT 0, `DESMSGVNDLCK` TEXT, `PDDSYNC` INTEGER NOT NULL DEFAULT 0, `GIRO` REAL NOT NULL DEFAULT 0, `FREEZER` INTEGER NOT NULL DEFAULT 0, `CODRTBCLT` INTEGER NOT NULL DEFAULT 1, `VALMINPDD` REAL NOT NULL DEFAULT 0.0, `CLTFUEL` INTEGER NOT NULL DEFAULT 0, `VALSLDTRC` REAL NOT NULL DEFAULT 0.0, `FISULTSIT` TEXT, `FISBXA` TEXT, `FISCLTHAB` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "codigoCliente",
+            "columnName": "CODCLT",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "razaoSocial",
+            "columnName": "NOMRAZSCLCLT",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nomeFantasia",
+            "columnName": "NOMFTSCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cpf",
+            "columnName": "NUMCPFCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cnpj",
+            "columnName": "NUMCGCCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ie",
+            "columnName": "NUMICCETACLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "valorSaldo",
+            "columnName": "VALSLDCLT",
+            "affinity": "REAL",
+            "notNull": false,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "limiteCrédito",
+            "columnName": "VALLMTCDTCLT",
+            "affinity": "REAL",
+            "notNull": false,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "dataCadastro",
+            "columnName": "DATCADCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "BOLBLTCLT",
+            "columnName": "BOLBLTCLT",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "EMLCLT",
+            "columnName": "EMLCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "LATCLT",
+            "affinity": "REAL",
+            "notNull": false,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "LONCLT",
+            "affinity": "REAL",
+            "notNull": false,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "CLTLCK",
+            "columnName": "CLTLCK",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "CODTRT",
+            "columnName": "CODTRT",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "CODSTR",
+            "columnName": "CODSTR",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "CODROT",
+            "columnName": "CODROT",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "CODCTICLT",
+            "columnName": "CODCTICLT",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "tabelaPreco",
+            "columnName": "CODTBLPRCCLT",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "CODRTOCLT",
+            "columnName": "CODRTOCLT",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "BOLFRZPPR",
+            "columnName": "BOLFRZPPR",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "VSTCLT",
+            "columnName": "VSTCLT",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "SEQVST",
+            "columnName": "SEQVST",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "CODFRMPAGPDR",
+            "columnName": "CODFRMPAGPDR",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "DESOBSCLT",
+            "columnName": "DESOBSCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "CODEPGRSPCAD",
+            "columnName": "CODEPGRSPCAD",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "DATITVCLT",
+            "columnName": "DATITVCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESEDRCLT",
+            "columnName": "DESEDRCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "NUMEDRCLT",
+            "columnName": "NUMEDRCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESBRO",
+            "columnName": "DESBRO",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "DESCDD",
+            "columnName": "DESCDD",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "CODUF",
+            "columnName": "CODUF_",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "NUMCEPEDRCLT",
+            "columnName": "NUMCEPEDRCLT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "QTDPTR",
+            "columnName": "QTDPTR",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "GROMEDMES",
+            "columnName": "GROMEDMES",
+            "affinity": "REAL",
+            "notNull": false,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "GROMESTRI",
+            "columnName": "GROMESTRI",
+            "affinity": "REAL",
+            "notNull": false,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "BOLINDCLTPOS",
+            "columnName": "BOLINDCLTPOS",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "BOLCLTAFD",
+            "columnName": "BOLCLTAFD",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "BOLINDCLTIBN",
+            "columnName": "BOLINDCLTIBN",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "BOLVNDLCK",
+            "columnName": "BOLVNDLCK",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "DESMSGVNDLCK",
+            "columnName": "DESMSGVNDLCK",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "PDDSYNC",
+            "columnName": "PDDSYNC",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "GIRO",
+            "columnName": "GIRO",
+            "affinity": "REAL",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "FREEZER",
+            "columnName": "FREEZER",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "CODRTBCLT",
+            "columnName": "CODRTBCLT",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "1"
+          },
+          {
+            "fieldPath": "VALMINPDD",
+            "columnName": "VALMINPDD",
+            "affinity": "REAL",
+            "notNull": true,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "CLTFUEL",
+            "columnName": "CLTFUEL",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "VALSLDTRC",
+            "columnName": "VALSLDTRC",
+            "affinity": "REAL",
+            "notNull": true,
+            "defaultValue": "0.0"
+          },
+          {
+            "fieldPath": "FISULTSIT",
+            "columnName": "FISULTSIT",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "FISBXA",
+            "columnName": "FISBXA",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "FISCLTHAB",
+            "columnName": "FISCLTHAB",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6c9520b1db2c36466a2a8d90d5591e10')"
+    ]
+  }
+}

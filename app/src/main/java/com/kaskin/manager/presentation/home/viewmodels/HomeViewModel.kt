@@ -1,12 +1,13 @@
 package com.kaskin.manager.presentation.home.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kaskin.manager.Models.LoggedInUserView
 import com.kaskin.manager.domain.employee.entities.Employee
 import com.kaskin.manager.domain.employee.usecases.GetEmployeeUsecase
+import com.kaskin.manager.presentation.login.states.LoggedInUserView
 import com.kaskin.manager.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -35,25 +36,27 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             getEmployee().catch { e ->
                 _employee.emit(
-                    Resource.Error<Employee>(
+                    Resource.Error(
                         message = e.localizedMessage ?: "Error Unexpected"
                     )
                 )
+                Log.e("AppError", "getWeekDays: ${e.message}")
             }.collect { result ->
                 when (result) {
                     is Resource.Error -> {
                         _employee.emit(
-                            Resource.Error<Employee>(
+                            Resource.Error(
                                 message = result.message,
                                 data = result.data
                             )
                         )
+                        Log.e("AppError", "getWeekDays: ${result.message}")
                     }
                     is Resource.Success -> {
-                        _employee.emit(Resource.Success<Employee>(data = result.data))
+                        _employee.emit(Resource.Success(data = result.data))
                     }
                     is Resource.Loading -> {
-                        _employee.emit(Resource.Loading<Employee>())
+                        _employee.emit(Resource.Loading())
 
                     }
                 }

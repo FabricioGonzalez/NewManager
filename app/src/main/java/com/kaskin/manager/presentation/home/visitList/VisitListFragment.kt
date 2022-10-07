@@ -10,10 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kaskin.manager.Views.Adapters.AbasAdapter
 import com.kaskin.manager.databinding.FragmentVisitListBinding
 import com.kaskin.manager.domain.week.entities.WeekDay
+import com.kaskin.manager.presentation.adapters.AbasAdapter
 import com.kaskin.manager.presentation.home.visitList.clientVisit.ClientVisitFragment
+import com.kaskin.manager.presentation.login.states.LoggedInUserView
 import com.kaskin.manager.utils.Resource
 
 class VisitListFragment : Fragment() {
@@ -24,6 +25,8 @@ class VisitListFragment : Fragment() {
 
     private lateinit var adapter: AbasAdapter
 
+    private var setor: Int? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -32,7 +35,7 @@ class VisitListFragment : Fragment() {
         ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             if (adapter.itemCount > 0)
-            /*adapter.refreshFragment(position)*/
+                adapter.refreshFragment(position)
 
             super.onPageSelected(position)
         }
@@ -46,6 +49,10 @@ class VisitListFragment : Fragment() {
 
         _binding = FragmentVisitListBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        requireArguments().let {
+            setor = Integer.parseInt((it.getSerializable("USER") as LoggedInUserView).setor)
+        }
 
         adapter = AbasAdapter(requireActivity())
         adapter.clear()
@@ -80,8 +87,10 @@ class VisitListFragment : Fragment() {
                 when (result) {
                     is Resource.Success<List<WeekDay>> -> {
                         result.data?.forEach { day ->
-                            var fragment = ClientVisitFragment(day.dayNumber)
-                            adapter.add(fragment, day.dayName)
+                            setor.let {
+                                var fragment = ClientVisitFragment(day.dayNumber, it!!)
+                                adapter.add(fragment, day.dayName)
+                            }
                         }
                         adapter.notifyDataSetChanged()
                     }

@@ -8,14 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.kaskin.manager.Models.LoggedInUserView
 import com.kaskin.manager.R
 import com.kaskin.manager.databinding.FragmentLoginBinding
+import com.kaskin.manager.presentation.login.states.LoggedInUserView
 import com.kaskin.manager.presentation.login.viewmodels.LoginViewModel
+import com.kaskin.manager.utils.Resource
+
 
 class LoginFragment : Fragment() {
 
@@ -31,7 +32,6 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -39,9 +39,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*  loginViewModel =
-              ViewModelProvider(this, LoginViewModelFactory())[LoginViewModel::class.java]*/
-
 
         val usernameEditText = binding.username
         val passwordEditText = binding.password
@@ -72,24 +69,24 @@ class LoginFragment : Fragment() {
 
         loginViewModel.loginResult.observe(viewLifecycleOwner)
         { loginResult ->
-            loginResult.error?.let {
-                loadingProgressBar.visibility = View.GONE
-                loadingBox?.visibility = View.GONE
 
-                showLoginFailed(it)
-            }
-            loginResult.success?.let {
-                loadingProgressBar.visibility = View.GONE
-                loadingBox?.visibility = View.GONE
+            when (loginResult) {
+                is Resource.Error -> {
+                    loadingProgressBar.visibility = View.GONE
+                    loadingBox?.visibility = View.GONE
 
-                updateUiWithUser(it)
-            }
-            loginResult.isLoading.takeIf {
-                if (it) {
+                    loginResult.message?.let { showLoginFailed(it) }
+                }
+                is Resource.Loading -> {
                     loadingProgressBar.visibility = View.VISIBLE
                     loadingBox?.visibility = View.VISIBLE
                 }
-                true
+                is Resource.Success -> {
+                    loadingProgressBar.visibility = View.GONE
+                    loadingBox?.visibility = View.GONE
+
+                    loginResult.data?.let { updateUiWithUser(it) }
+                }
             }
         }
 
@@ -114,7 +111,7 @@ class LoginFragment : Fragment() {
         passwordEditText.addTextChangedListener(afterTextChangedListener)
 
         passwordEditText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (loginButton.isEnabled && actionId == EditorInfo.IME_ACTION_DONE) {
                 loginViewModel.login(
                     usernameEditText.text.toString(),
                     passwordEditText.text.toString()
@@ -124,10 +121,11 @@ class LoginFragment : Fragment() {
         }
 
         loginButton.setOnClickListener {
-            loginViewModel.login(
-                usernameEditText.text.toString(),
-                passwordEditText.text.toString()
-            )
+            if (loginButton.isEnabled)
+                loginViewModel.login(
+                    usernameEditText.text.toString(),
+                    passwordEditText.text.toString()
+                )
         }
     }
 
@@ -145,9 +143,9 @@ class LoginFragment : Fragment() {
         navController?.navigate(R.id.nav_home, bundle)
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
+    private fun showLoginFailed(errorMessage: String) {
         val appContext = context?.applicationContext ?: return
-        Toast.makeText(appContext, errorString, Toast.LENGTH_LONG).show()
+        Toast.makeText(appContext, errorMessage, Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {

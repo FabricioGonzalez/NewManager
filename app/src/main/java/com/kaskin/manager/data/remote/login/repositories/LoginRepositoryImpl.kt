@@ -1,11 +1,11 @@
 package com.kaskin.manager.data.remote.login.repositories
 
-import com.kaskin.manager.Enums.AppUserRole
-import com.kaskin.manager.Models.LoginRequest
-import com.kaskin.manager.Models.UserLoginData
+import com.kaskin.manager.data.remote.login.dto.LoginRequest
+import com.kaskin.manager.data.remote.login.dto.UserLoginData
 import com.kaskin.manager.data.remote.login.services.LoginService
 import com.kaskin.manager.domain.login.entities.User
 import com.kaskin.manager.domain.login.repository.LoginRepository
+import com.kaskin.manager.domain.week.enums.AppUserRole
 import com.kaskin.manager.utils.Resource
 import java.io.IOException
 import javax.inject.Inject
@@ -21,29 +21,9 @@ class LoginRepositoryImpl @Inject constructor(
     suspend override fun login(username: String, password: String): Resource<User> {
         try {
             var responseData: UserLoginData? = repository
-                .GetLogin(LoginRequest(username, password)).execute().body()?.user
-
-            /*val call = HTTPWebClient().loginService()
-                .GetLogin(LoginRequest(username, password))
-            val response = call.enqueue(object : Callback<LoginResponse?> {
-                override fun onResponse(
-                    call: Call<LoginResponse?>?,
-                    response: Response<LoginResponse?>?
-                ) {
-                    responseData = response?.body()?.user
-                }
-
-                override fun onFailure(
-                    call: Call<LoginResponse?>?,
-                    t: Throwable?
-                ) {
-                    Log.e("onFailure error", t?.message.toString())
-                }
-            }
-            )*/
+                .getLogin(LoginRequest(username, password)).execute().body()?.user
 
             if (responseData != null) {
-
 
                 return Resource.Success<User>(
                     User(

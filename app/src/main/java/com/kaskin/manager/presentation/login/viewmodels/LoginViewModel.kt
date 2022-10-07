@@ -4,12 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kaskin.manager.Models.LoggedInUserView
-import com.kaskin.manager.Models.LoginFormState
-import com.kaskin.manager.Models.LoginResult
 import com.kaskin.manager.R
 import com.kaskin.manager.domain.login.entities.User
 import com.kaskin.manager.domain.login.usecases.LogInUsecase
+import com.kaskin.manager.presentation.login.states.LoggedInUserView
+import com.kaskin.manager.presentation.login.states.LoginFormState
 import com.kaskin.manager.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -24,8 +23,8 @@ class LoginViewModel @Inject constructor(
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
-    private val _loginResult = MutableLiveData<LoginResult>()
-    val loginResult: LiveData<LoginResult> = _loginResult
+    private val _loginResult = MutableLiveData<Resource<LoggedInUserView>>()
+    val loginResult: LiveData<Resource<LoggedInUserView>> = _loginResult
 
     fun login(username: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -33,31 +32,24 @@ class LoginViewModel @Inject constructor(
                 when (result) {
                     is Resource.Error<User> -> {
                         _loginResult.postValue(
-                            LoginResult(
-                                success = null,
-                                error = R.string.login_failed,
-                                isLoading = false
+                            Resource.Error(
+                                message = result.message,
                             )
                         )
                     }
                     is Resource.Success<User> -> {
                         _loginResult.postValue(
-                            LoginResult(
-                                success = LoggedInUserView(
+                            Resource.Success(
+                                data = LoggedInUserView(
                                     displayName = result.data!!.name,
                                     setor = result.data.setor.toString()
-                                ), error = null,
-                                isLoading = false
+                                )
                             )
                         )
                     }
                     is Resource.Loading<User> -> {
                         _loginResult.postValue(
-                            LoginResult(
-                                error = null,
-                                success = null,
-                                isLoading = true
-                            )
+                            Resource.Loading()
                         )
                     }
                 }

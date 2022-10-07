@@ -1,5 +1,7 @@
 package com.kaskin.manager.di
 
+import com.kaskin.manager.domain.clients.repository.ClientRepository
+import com.kaskin.manager.domain.clients.usecases.GetAllClientsUsecase
 import com.kaskin.manager.domain.employee.repository.EmployeeRepository
 import com.kaskin.manager.domain.employee.usecases.GetEmployeeUsecase
 import com.kaskin.manager.domain.login.repository.LoginRepository
@@ -41,6 +43,12 @@ object UsecasesModule {
     @ViewModelScoped
     fun provideGetWeekDaysUsecase(repository: WeekRepository): GetWeekDaysUsecase {
         return GetWeekDaysUsecase(repository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetAllClientsUsecase(repository: ClientRepository): GetAllClientsUsecase {
+        return GetAllClientsUsecase(repository)
     }
 
 }
