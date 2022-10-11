@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.kaskin.manager.databinding.FragmentClientRegistrationBinding
 
 class ClientRegistrationFragment : Fragment() {
 
-    private lateinit var viewModel: com.kaskin.manager.presentation.client_registration.ClientRegistrationViewModel
+    private val viewModel: ClientRegistrationViewModel by activityViewModels()
     private var _binding: FragmentClientRegistrationBinding? = null
 
     private val binding get() = _binding!!
@@ -18,10 +18,6 @@ class ClientRegistrationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[com.kaskin.manager.presentation.client_registration.ClientRegistrationViewModel::class.java]
 
         _binding = FragmentClientRegistrationBinding.inflate(inflater, container, false)
 

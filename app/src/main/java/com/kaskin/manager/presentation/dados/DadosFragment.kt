@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kaskin.manager.presentation.adapters.AbasAdapter
 import com.kaskin.manager.databinding.FragmentDadosBinding
+import com.kaskin.manager.presentation.adapters.AbasAdapter
 import com.kaskin.manager.presentation.dados.database_backup.DatabaseBackupFragment
 import com.kaskin.manager.presentation.dados.database_clean_up.DatabaseCleanUpFragment
 import com.kaskin.manager.presentation.dados.database_list.DatabaseListFragment
 
 
 class DadosFragment : Fragment() {
-    private lateinit var viewModel: DadosViewModel
+    private val viewModel: DadosViewModel by activityViewModels()
 
     private var _binding: FragmentDadosBinding? = null
 
@@ -51,11 +51,6 @@ class DadosFragment : Fragment() {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[DadosViewModel::class.java]
-
         _binding = FragmentDadosBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
@@ -67,7 +62,7 @@ class DadosFragment : Fragment() {
 
         val viewPager = binding.abasViewPager
         viewPager?.adapter = adapter
-        
+
         viewPager?.registerOnPageChangeCallback(viewOnPageChangeCallback)
 
         val tabLayout = binding.abas

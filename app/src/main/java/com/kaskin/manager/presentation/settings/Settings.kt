@@ -6,18 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.kaskin.manager.R
 import com.kaskin.manager.databinding.FragmentSettingsBinding
 
 class Settings : Fragment() {
 
-    private lateinit var settingsViewModel: SettingsViewModel
+    private val settingsViewModel: SettingsViewModel by activityViewModels()
     private var _binding: FragmentSettingsBinding? = null
 
     private var isNightModeOn =
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) false
-        else true
+        AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,11 +28,6 @@ class Settings : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        settingsViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[SettingsViewModel::class.java].also { settingsViewModel = it }
-
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
         val theme =

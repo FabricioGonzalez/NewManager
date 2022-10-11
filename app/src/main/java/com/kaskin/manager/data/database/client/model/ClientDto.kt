@@ -112,6 +112,8 @@ data class ClientDto(
     val FISBXA: String?,
     @ColumnInfo(name = "FISCLTHAB", defaultValue = "0")
     val FISCLTHAB: Int,
+    @ColumnInfo(name = "CODVDD", defaultValue = "0")
+    val CODVDD: Int
 )
 
 fun ClientDto.ToEntity(): Client {
@@ -124,7 +126,7 @@ fun ClientDto.ToEntity(): Client {
         IE = ie,
         saldo = valorSaldo,
         limiteCredito = limiteCrédito,
-        setor = 0
+        setor = CODVDD
     )
 }
 
@@ -181,6 +183,7 @@ fun Client.ToDto(): ClientDto {
         tabelaPreco = 0,
         VALMINPDD = 0.0,
         VALSLDTRC = 0.0,
-        VSTCLT = 0
+        VSTCLT = 0,
+        CODVDD = setor!!
     )
 }

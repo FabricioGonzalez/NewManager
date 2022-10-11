@@ -1,45 +1,30 @@
 package com.kaskin.manager.presentation.home.visitList.clientVisit
 
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kaskin.manager.domain.clients.entities.Client
 import com.kaskin.manager.domain.clients.usecases.GetAllClientsUsecase
 import com.kaskin.manager.utils.Resource
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ClientVisitViewModel @AssistedInject constructor(
+@HiltViewModel
+class ClientVisitViewModel @Inject constructor(
     private val getAllClientsUsecase: GetAllClientsUsecase,
-    @Assisted("day") private val day: Int,
 ) : ViewModel() {
 
-    @AssistedFactory
-    interface Factory {
-        fun create(
-            @Assisted("day") day: Int,
-        ): ClientVisitViewModel
-    }
+    private var day: Int = 0
 
-    @Suppress("UNCHECKED_CAST")
-    companion object {
-        fun provideFactory(
-            assistedFactory: Factory,
-            day: Int,
-        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return assistedFactory.create(day) as T
-            }
-        }
-    }
-
-    fun changeDay() {
-        _text.value = "This is dia $day"
+    fun changeDay(day: Int) {
+        this.day = day
+        _text.value = "This is dia ${this.day}"
     }
 
     private val _clients =
@@ -52,7 +37,7 @@ class ClientVisitViewModel @AssistedInject constructor(
     val text: LiveData<String> = _text
 
     fun getClients(codigo: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             getAllClientsUsecase.let {
                 it.invoke(codigo, day).catch { e ->
                     _clients.emit(
@@ -60,7 +45,7 @@ class ClientVisitViewModel @AssistedInject constructor(
                             message = e.localizedMessage ?: "Error Unexpected"
                         )
                     )
-                    Log.e("AppError", "getAllClientsUsecase: ${e.message}")
+                    Log.e("AppError", "getAllClientsUsecase Catch: ${e.message}")
                 }.collect { result ->
                     when (result) {
                         is Resource.Loading -> {
@@ -73,7 +58,7 @@ class ClientVisitViewModel @AssistedInject constructor(
                                     message = result.message
                                 )
                             )
-                            Log.e("AppError", "getAllClientsUsecase: ${result.message}")
+                            Log.e("AppError", "getAllClientsUsecase Reponse: ${result.message}")
                         }
                         is Resource.Success -> {
                             _clients.emit(Resource.Success(data = result.data))

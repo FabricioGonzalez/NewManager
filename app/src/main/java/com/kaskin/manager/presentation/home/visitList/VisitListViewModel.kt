@@ -32,7 +32,7 @@ class VisitListViewModel @Inject constructor(
                         message = e.localizedMessage ?: "Error Unexpected"
                     )
                 )
-                Log.e("AppError", "getWeekDays: ${e.message}", )
+                Log.e("AppError", "getWeekDays Catch: ${e.message}")
             }.collect { result ->
                 when (result) {
                     is Resource.Loading -> {
@@ -45,7 +45,7 @@ class VisitListViewModel @Inject constructor(
                                 message = result.message
                             )
                         )
-                        Log.e("AppError", "getWeekDays: ${result.message}", )
+                        Log.e("AppError", "getWeekDays Error: ${result.message}")
                     }
                     is Resource.Success -> {
                         _weekDays.emit(Resource.Success(data = result.data))

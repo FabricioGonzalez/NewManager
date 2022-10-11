@@ -14,7 +14,7 @@ import com.kaskin.manager.data.database.week.model.WeekDTO
 
 @Database(
     entities = [EmployeeDTO::class, WeekDTO::class, ClientDto::class],
-    version = 65,
+    version = 66,
     exportSchema = true,
     autoMigrations = [
         AutoMigration(from = 1, to = 2),
@@ -25,7 +25,8 @@ import com.kaskin.manager.data.database.week.model.WeekDTO
         AutoMigration(from = 62, to = 63),
         AutoMigration(from = 63, to = 64),
         AutoMigration(from = 64, to = 65, spec = RenameDTACADCLTColumn::class),
-        /*AutoMigration(from = 59, to = 2)*/
+        AutoMigration(from = 65, to = 66),
+
     ]
 )
 abstract class Database : RoomDatabase() {
@@ -39,5 +40,5 @@ abstract class Database : RoomDatabase() {
     fromColumnName = "DTACADCLT",
     toColumnName = "DTACADCLT"
 )
-class RenameDTACADCLTColumn : AutoMigrationSpec
 
+class RenameDTACADCLTColumn : AutoMigrationSpec

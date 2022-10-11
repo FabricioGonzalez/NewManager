@@ -20,7 +20,7 @@ class GetAllClientsUsecase @Inject constructor(
             is Resource.Error<List<Client>>
             -> {
                 emit(Resource.Error<List<Client>>(result.message, result?.data))
-                Log.e("LoginUsecase", "invoke: ${result.message}")
+                Log.e("GetAllClientsUsecase", "invoke: ${result.message}")
             }
             is Resource.Success<List<Client>>
             -> {

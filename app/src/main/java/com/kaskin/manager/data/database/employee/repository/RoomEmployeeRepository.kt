@@ -17,8 +17,10 @@ class RoomEmployeeRepository @Inject constructor(private val db: RoomDatabase) :
 
     override suspend fun getEmplyeeData(): Resource<Employee> {
         return try {
-            val result = (db as Database).employeeDao.getEmplyeeData().ToEntity()
-            return Resource.Success<Employee>(result)
+            val result = (db as Database).employeeDao.getEmployeeData()
+            return result.let {
+                Resource.Success<Employee>(it.ToEntity())
+            }
         } catch (e: Exception) {
             return Resource.Error<Employee>(e.localizedMessage ?: "Algo deu errado")
         }

@@ -11,7 +11,7 @@ interface ClientDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertClient(client: ClientDto)
 
-    @Query("SELECT * FROM IMOBCLT WHERE CODCLT = (:codigo)")
+    @Query("SELECT * FROM IMOBCLT WHERE CODVDD = (:codigo)")
     suspend fun getAllClientsByVendedor(codigo: Int): List<ClientDto>
 
     @Query("SELECT * FROM IMOBCLT")
@@ -22,10 +22,15 @@ interface ClientDAO {
 
     @Query("SELECT * FROM IMOBCLT WHERE CODCLT = (:codigo)")
     suspend fun getClientByCode(codigo: Int): ClientDto
-    
-    @Query("SELECT * FROM IMOBCLT WHERE CODCLT = (:codigo) AND VSTCLT = (:visitDay)")
-    suspend fun getAllClientsByVisitDay(codigo: Int, visitDay: Int): List<ClientDto>
 
-    @Query("SELECT * FROM IMOBCLT WHERE CODCLT = (:codigo) AND VSTCLT = (:visitDay)")
+/*
+    @Query("SELECT * FROM IMOBCLT WHERE CODVDD = (:codigo) AND VSTCLT = (:visitDay)")
+    suspend fun getAllClientsByVisitDay(codigo: Int, visitDay: Int): List<ClientDto>
+*/
+
+    @Query("SELECT * FROM IMOBCLT WHERE  VSTCLT = (:visitDay)")
+    suspend fun getAllClientsByVisitDay(visitDay: Int): List<ClientDto>
+
+    @Query("SELECT * FROM IMOBCLT WHERE CODVDD = (:codigo) AND VSTCLT = (:visitDay)")
     suspend fun getClientByVisitDay(codigo: Int, visitDay: Int): ClientDto
 }

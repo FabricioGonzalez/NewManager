@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.kaskin.manager.databinding.FragmentDatabaseBackupBinding
 
 class DatabaseBackupFragment : Fragment() {
@@ -18,15 +18,13 @@ class DatabaseBackupFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: DatabaseBackupViewModel
+    private val viewModel: DatabaseBackupViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-
-        viewModel = ViewModelProvider(this)[DatabaseBackupViewModel::class.java]
 
         _binding = FragmentDatabaseBackupBinding.inflate(inflater, container, false)
 

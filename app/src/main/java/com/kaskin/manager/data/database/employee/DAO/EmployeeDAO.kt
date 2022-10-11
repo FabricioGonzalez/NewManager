@@ -13,5 +13,5 @@ interface EmployeeDAO {
     suspend fun insertEmployee(employeeDto: EmployeeDTO)
 
     @Query("SELECT * FROM IMOBEPG")
-    suspend fun getEmplyeeData(): EmployeeDTO
+    suspend fun getEmployeeData(): EmployeeDTO
 }

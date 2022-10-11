@@ -40,7 +40,7 @@ class HomeViewModel @Inject constructor(
                         message = e.localizedMessage ?: "Error Unexpected"
                     )
                 )
-                Log.e("AppError", "getWeekDays: ${e.message}")
+                Log.e("AppError", "getEmployeeData Catch: ${e.message}")
             }.collect { result ->
                 when (result) {
                     is Resource.Error -> {
@@ -50,7 +50,7 @@ class HomeViewModel @Inject constructor(
                                 data = result.data
                             )
                         )
-                        Log.e("AppError", "getWeekDays: ${result.message}")
+                        Log.e("AppError", "getEmployeeData Response: ${result.message}")
                     }
                     is Resource.Success -> {
                         _employee.emit(Resource.Success(data = result.data))

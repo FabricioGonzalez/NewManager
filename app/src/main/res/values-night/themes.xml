@@ -35,7 +35,7 @@
         <item name="colorControlNormal">#ffffff</item>
     </style>
 
-    <style name="Theme.Application.NoActionBar">
+    <style name="Theme.Application.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 

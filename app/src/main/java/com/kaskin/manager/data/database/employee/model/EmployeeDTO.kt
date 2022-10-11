@@ -64,8 +64,9 @@ data class EmployeeDTO(
     val IGIRO: Double
 )
 
-fun EmployeeDTO.ToEntity(): Employee {
-    return Employee(setor = idFuncionario, nome = apelidoFuncionario!!)
+fun EmployeeDTO.ToEntity(): Employee? {
+
+    return apelidoFuncionario?.let { Employee(setor = idFuncionario, nome = it) }
 }
 
 fun Employee.ToDto(): EmployeeDTO {

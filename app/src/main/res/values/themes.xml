@@ -32,7 +32,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/md_theme_dark_primary</item>

@@ -70,7 +70,7 @@ class RoomClientRepository @Inject constructor(private val db: RoomDatabase) : C
         visitDay: Int
     ): Resource<List<Client>> {
         val clients =
-            (db as Database).clientDao.getAllClientsByVisitDay(codigo, visitDay).map { client ->
+            (db as Database).clientDao.getAllClientsByVisitDay(/*codigo, */visitDay).map { client ->
                 client.ToEntity()
             }
         if (clients != null && clients.isNotEmpty()) {
