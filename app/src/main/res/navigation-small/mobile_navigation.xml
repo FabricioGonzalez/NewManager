@@ -15,22 +15,18 @@
             app:destination="@id/HomeNavigation" />
         <argument
             android:name="USER"
-            app:argType="com.kaskin.manager.presentation.login.states.LoggedInUserView"
+            app:argType="com.kaskin.manager.presentation.user.login.states.LoggedInUserView"
             app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/nav_client_registration"
-        android:name="com.kaskin.manager.presentation.client_registration.ClientRegistrationFragment"
+        android:name="com.kaskin.manager.presentation.clients.client_registration.ClientRegistrationFragment"
         android:label="@string/menu_registro_cliente"
         tools:layout="@layout/fragment_client_registration" />
     <fragment
         android:id="@+id/nav_supervisor"
-        android:name="com.kaskin.manager.presentation.supervisor.SupervisorFragment"
+        android:name="com.kaskin.manager.presentation.user.supervisor.SupervisorFragment"
         android:label="@string/menu_supervisor" />
-    <fragment
-        android:id="@+id/nav_communication"
-        android:name="com.kaskin.manager.presentation.communication.CommunicationFragment"
-        android:label="@string/menu_comunicacao" />
     <fragment
         android:id="@+id/nav_database"
         android:name="com.kaskin.manager.presentation.dados.DadosFragment"
@@ -45,12 +41,18 @@
         app:startDestination="@id/visitListFragment">
         <fragment
             android:id="@+id/visitListFragment"
-            android:name="com.kaskin.manager.presentation.home.visitList.VisitListFragment"
-            android:label="@string/menu_visit_list" />
+            android:name="com.kaskin.manager.presentation.vendas.visitList.VisitListFragment"
+            android:label="@string/menu_visit_list">
+            <argument
+                android:name="USER"
+                android:defaultValue="@null"
+                app:argType="com.kaskin.manager.presentation.user.login.states.LoggedInUserView"
+                app:nullable="true" />
+        </fragment>
     </navigation>
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.kaskin.manager.presentation.login.LoginFragment"
+        android:name="com.kaskin.manager.presentation.user.login.LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_nav_home"
@@ -61,6 +63,10 @@
     </fragment>
     <fragment
         android:id="@+id/registerUserFragment"
-        android:name="com.kaskin.manager.presentation.register_user.RegisterUserFragment"
+        android:name="com.kaskin.manager.presentation.user.register_user.RegisterUserFragment"
         android:label="@string/menu_register_user" />
+    <activity
+        android:id="@+id/nav_communication"
+        android:name="com.kaskin.manager.presentation.communication.CommunicationScreen"
+        android:label="CommunicationScreen" />
 </navigation>

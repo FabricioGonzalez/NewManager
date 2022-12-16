@@ -24,6 +24,10 @@ class ClientListAdapter : Adapter<ClientListAdapter.ClientListViewHolder>() {
 
     private var dataSet: List<Client> = emptyList()
 
+    fun getItem(position: Int):Client{
+        return dataSet[position]
+    }
+
     fun SetDataSet(list: List<Client>) {
         dataSet = list
 

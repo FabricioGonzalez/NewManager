@@ -48,4 +48,18 @@
     <string name="text_senha_confirm_vendedor">Confirm Password</string>
     <string name="button_register_user">Send</string>
     <string name="database_not_found">Database not Found</string>
+
+    <string name="title_activity_communication_screen">CommunicationScreen</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_send">Send</string>
+    <string name="title_recieve">Recieve</string>
+
+    <string name="dialog_client_options">Client Options</string>
+    <string name="client_options_sell">Sell</string>
+    <string name="client_options_gauge_freezers">Gauge Freezers</string>
+    <string name="client_options_get_location">Get Location</string>
+
 </resources>

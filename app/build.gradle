@@ -8,12 +8,6 @@ plugins {
 
 android {
     signingConfigs {
-        debug {
-            storeFile file('C:\\Users\\ti\\Desktop\\NewManager\\key\\appKeyStore.jks')
-            storePassword 'kaskin@2022'
-            keyAlias 'appKey'
-            keyPassword 'kaskin@2022'
-        }
         release {
             storeFile file('C:\\Users\\ti\\Desktop\\NewManager\\key\\appKeyStore.jks')
             storePassword 'kaskin@2022'
@@ -80,6 +74,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'com.google.android.gms:play-services-basement:18.1.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     kapt 'com.google.dagger:hilt-android-compiler:2.38.1'
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt "androidx.hilt:hilt-compiler:1.0.0"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
-    tools:context=".presentation.register_user.RegisterUserFragment">
+    tools:context=".presentation.user.register_user.RegisterUserFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"

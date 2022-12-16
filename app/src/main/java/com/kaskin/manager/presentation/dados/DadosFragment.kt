@@ -24,7 +24,7 @@ class DadosFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewOnPageChangeCallback: OnPageChangeCallback = object :
-        ViewPager2.OnPageChangeCallback() {
+        OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             if (position == 0) {
 

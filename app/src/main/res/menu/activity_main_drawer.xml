@@ -28,5 +28,8 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_round_settings_24"
             android:title="@string/menu_settings" />
+        <item
+            android:id="@+id/teste"
+            android:title="teste" />
     </group>
 </menu>

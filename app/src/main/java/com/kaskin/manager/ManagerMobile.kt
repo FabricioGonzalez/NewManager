@@ -43,7 +43,7 @@ class ManagerMobile : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_manager_mobile)
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.nav_login) {
                 supportActionBar?.hide()
             } else {

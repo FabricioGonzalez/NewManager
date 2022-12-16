@@ -24,7 +24,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
 
 
 @ExperimentalCoroutinesApi
@@ -37,7 +36,7 @@ object RepositoryModule {
         return Room.databaseBuilder(
             context,
             Database::class.java,
-            "${context.getExternalFilesDir("databases").toString()}${File.separatorChar}manager.db"
+            Constants.DBName
         )
             /*.addMigrations(MIGRATION_1_2)*/.build()
     }

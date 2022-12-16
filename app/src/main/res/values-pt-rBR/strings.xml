@@ -48,4 +48,17 @@
     <string name="text_senha_confirm_vendedor">Confirmar Senha</string>
     <string name="button_register_user">Enviar</string>
     <string name="database_not_found">Banco de dados não encontrado</string>
+
+    <string name="title_activity_communication_screen">Comunicação</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notificações</string>
+
+    <string name="title_send">Transmitir</string>
+    <string name="title_recieve">Receber</string>
+
+    <string name="dialog_client_options">Opções do Cliente</string>
+    <string name="client_options_sell">Vender</string>
+    <string name="client_options_gauge_freezers">Aferir Freezers</string>
+    <string name="client_options_get_location">Obter Localização</string>
 </resources>

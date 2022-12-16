@@ -5,7 +5,6 @@ import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -16,8 +15,7 @@ import androidx.navigation.findNavController
 import com.kaskin.manager.R
 import com.kaskin.manager.databinding.FragmentHomeBinding
 import com.kaskin.manager.domain.employee.entities.Employee
-import com.kaskin.manager.presentation.home.viewmodels.HomeViewModel
-import com.kaskin.manager.presentation.login.states.LoggedInUserView
+import com.kaskin.manager.presentation.user.login.states.LoggedInUserView
 import com.kaskin.manager.utils.ConnectionChecker
 import com.kaskin.manager.utils.Resource
 import kotlinx.coroutines.launch
@@ -37,7 +35,7 @@ class HomeFragment() : Fragment() {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        requireActivity().findViewById<Toolbar>(R.id.toolbar).visibility = View.VISIBLE
+/*        requireActivity().findViewById<Toolbar>(R.id.toolbar).visibility = View.VISIBLE*/
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -47,8 +45,9 @@ class HomeFragment() : Fragment() {
 
         if (arguments != null) {
             // The getPrivacyPolicyLink() method will be created automatically.
-            val user: LoggedInUserView =
-                requireArguments().getSerializable("USER") as LoggedInUserView
+            val args = requireArguments()
+
+            val user: LoggedInUserView = args.getSerializable("USER"/*, LoggedInUserView::class.java*/) as LoggedInUserView
             homeViewModel.UpdateUser(user)
         }
 
@@ -67,7 +66,8 @@ class HomeFragment() : Fragment() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 val navController =
-                    requireActivity().findNavController(R.id.nav_host_fragment_content_manager_mobile)
+                    requireActivity()
+                        .findNavController(R.id.nav_host_fragment_content_manager_mobile)
                 // Handle item selection
                 return when (menuItem.itemId) {
                     R.id.mnuVendas -> {
@@ -84,7 +84,6 @@ class HomeFragment() : Fragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
     }
 
     fun setupObservers() {
@@ -143,7 +142,6 @@ class HomeFragment() : Fragment() {
             }
         }
     }
-
 
     /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         // Inflate the menu; this adds items to the action bar if it is present.

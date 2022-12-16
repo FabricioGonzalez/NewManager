@@ -16,7 +16,7 @@ class Settings : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
 
     private var isNightModeOn =
-        AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO
+        AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES
 
     // This property is only valid between onCreateView and
     // onDestroyView.
