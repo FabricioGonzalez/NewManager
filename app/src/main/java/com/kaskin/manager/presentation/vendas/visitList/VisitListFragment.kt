@@ -10,12 +10,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kaskin.manager.R
 import com.kaskin.manager.databinding.FragmentVisitListBinding
 import com.kaskin.manager.domain.week.entities.WeekDay
 import com.kaskin.manager.presentation.adapters.AbasAdapter
 import com.kaskin.manager.presentation.user.login.states.LoggedInUserView
 import com.kaskin.manager.presentation.vendas.visitList.clientVisit.ClientVisitFragment
-import com.kaskin.manager.presentation.vendas.visitList.client_options.ClientOptionsDialogFragment
 import com.kaskin.manager.utils.Resource
 
 class VisitListFragment : Fragment() {
@@ -52,7 +52,7 @@ class VisitListFragment : Fragment() {
 
         requireArguments().let {
             setor = Integer.parseInt(
-                (it.getSerializable("USER"/*, LoggedInUserView::class.java*/)
+                (it.getSerializable(getString(R.string.home_to_visit_args)/*, LoggedInUserView::class.java*/)
                         as LoggedInUserView)
                     .setor
             )
@@ -111,13 +111,13 @@ class VisitListFragment : Fragment() {
                             .show()
                     }
                     is Resource.Loading<List<WeekDay>> -> {
-                        Toast
+                       /* Toast
                             .makeText(
                                 requireContext(),
                                 "Loading ...",
                                 Toast.LENGTH_LONG
                             )
-                            .show()
+                            .show()*/
                     }
                 }
             }

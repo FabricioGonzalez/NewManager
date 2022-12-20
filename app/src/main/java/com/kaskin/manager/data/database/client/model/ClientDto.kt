@@ -134,7 +134,7 @@ fun Client.ToDto(): ClientDto {
     return ClientDto(
         codigoCliente = codigoCliente,
         razaoSocial = razaoSocial,
-        nomeFantasia = nomeFantasia!!,
+        nomeFantasia = nomeFantasia,
         cpf = CPF,
         cnpj = CNPJ,
         ie = IE,

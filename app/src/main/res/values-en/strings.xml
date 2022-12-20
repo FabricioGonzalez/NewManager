@@ -61,5 +61,12 @@
     <string name="client_options_sell">Sell</string>
     <string name="client_options_gauge_freezers">Gauge Freezers</string>
     <string name="client_options_get_location">Get Location</string>
+    <string name="home_to_visit_args">USER</string>
+    <string name="visit_to_pedidos_args">codigo_cliente</string>
+
+    <string name="tab_title_items">Products</string>
+    <string name="tab_title_resumo">Summary</string>
+    <string name="tab_title_finalizacao">Terminate Order</string>
+    <string name="menu_pedidos">Order</string>
 
 </resources>

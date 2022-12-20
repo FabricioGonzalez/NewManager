@@ -2,7 +2,7 @@
 <resources>
     <color name="seed">#ffb52e</color>
     <color name="transparent">#00000000</color>
-    <color name="md_theme_primary">#68AFD3</color>
+    <color name="md_theme_primary">#366B87</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#033F5E</color>
     <color name="md_theme_onPrimaryContainer">#94DAFA</color>

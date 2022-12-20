@@ -64,7 +64,11 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun UpdateUser(userView: LoggedInUserView) {
+    fun updateUser(userView: LoggedInUserView) {
+        if (employee.value !is Resource.Success) {
+            getEmployeeData()
+        }
+
         _user.value = Resource.Success(userView)
     }
 

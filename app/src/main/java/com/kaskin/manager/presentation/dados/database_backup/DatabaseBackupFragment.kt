@@ -1,10 +1,8 @@
 package com.kaskin.manager.presentation.dados.database_backup
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.provider.SyncStateContract.Constants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,25 +16,21 @@ import java.io.FileOutputStream
 
 class DatabaseBackupFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = DatabaseBackupFragment()
-    }
-
     private var _binding: FragmentDatabaseBackupBinding? = null
 
     private val binding get() = _binding!!
 
     private val viewModel: DatabaseBackupViewModel by activityViewModels()
 
-
-    @SuppressLint("NewApi")
-    var launcher: ActivityResultLauncher<Intent> = registerForActivityResult(
+    private var launcher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             result?.data?.data?.let { viewModel.setCurrentPath(it) }
 
-            val dataDir = "${requireContext().dataDir.absolutePath}/databases/${com.kaskin.manager.utils.Constants.DBName}"
+            val dir =requireContext().getDatabasePath(com.kaskin.manager.utils.Constants.DBName)
+
+            /*val dataDir = "${requireContext().dataDir.absolutePath}/databases/${com.kaskin.manager.utils.Constants.DBName}"*/
 
             val list = requireContext().databaseList()
 
@@ -50,7 +44,7 @@ class DatabaseBackupFragment : Fragment() {
                     .openInputStream(res)
             }
                 .use { fis ->
-                    FileOutputStream(dataDir).use { os ->
+                    FileOutputStream(dir).use { os ->
 
                         val buffer = ByteArray(1024)
                         var len: Int

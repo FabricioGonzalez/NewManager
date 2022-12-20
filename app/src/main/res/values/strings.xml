@@ -69,6 +69,14 @@
     <string name="client_options_sell">Sell</string>
     <string name="client_options_gauge_freezers">Gauge Freezers</string>
     <string name="client_options_get_location">Get Location</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home_to_visit_args">USER</string>
+    <string name="visit_to_pedidos_args">codigo_cliente</string>
+
+    <string name="tab_title_items">Products</string>
+    <string name="tab_title_resumo">Summary</string>
+    <string name="tab_title_finalizacao">Terminate Order</string>
+
+    <string name="menu_pedidos">Order</string>
+    <string name="valor_total_a_pagar">Valor total a pagar</string>
 </resources>

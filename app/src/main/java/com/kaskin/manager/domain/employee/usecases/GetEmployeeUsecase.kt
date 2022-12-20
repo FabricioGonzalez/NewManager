@@ -12,25 +12,23 @@ class GetEmployeeUsecase @Inject constructor(
     private val repository: EmployeeRepository
 ) {
     operator fun invoke(): Flow<Resource<Employee>> = flow {
-        emit(Resource.Loading<Employee>())
+        emit(Resource.Loading())
 
-        val employee = repository.getEmplyeeData()
-
-        when (employee) {
+        when (val employee = repository.getEmplyeeData()) {
             is Resource.Error<Employee> -> {
-                emit(Resource.Error<Employee>(employee.message))
+                emit(Resource.Error(employee.message))
             }
             is Resource.Success<Employee> -> {
-                emit(Resource.Success<Employee>(employee.data))
+                emit(Resource.Success(employee.data))
             }
             is Resource.Loading<Employee> -> {
-                emit(Resource.Loading<Employee>())
+                emit(Resource.Loading())
             }
         }
 
     }.catch { err ->
         emit(
-            Resource.Error<Employee>(
+            Resource.Error(
                 err.localizedMessage ?: "An unexpected Error occurred!"
             )
         )

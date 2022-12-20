@@ -22,20 +22,18 @@ import kotlinx.coroutines.launch
 
 class HomeFragment() : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
 
     private val homeViewModel by activityViewModels<HomeViewModel>()
 
     private lateinit var connectionChecker: ConnectionChecker
 
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-
-/*        requireActivity().findViewById<Toolbar>(R.id.toolbar).visibility = View.VISIBLE*/
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -47,8 +45,9 @@ class HomeFragment() : Fragment() {
             // The getPrivacyPolicyLink() method will be created automatically.
             val args = requireArguments()
 
-            val user: LoggedInUserView = args.getSerializable("USER"/*, LoggedInUserView::class.java*/) as LoggedInUserView
-            homeViewModel.UpdateUser(user)
+            val user: LoggedInUserView =
+                args.getSerializable(getString(R.string.home_to_visit_args)/*, LoggedInUserView::class.java*/) as LoggedInUserView
+            homeViewModel.updateUser(user)
         }
 
         UpdateConnectionState(root)
@@ -73,7 +72,7 @@ class HomeFragment() : Fragment() {
                     R.id.mnuVendas -> {
                         val bundle = Bundle()
                         bundle.putSerializable(
-                            "USER",
+                            getString(R.string.home_to_visit_args),
                             homeViewModel.user.value.data
                         ) // Serializable Object
 
@@ -86,7 +85,7 @@ class HomeFragment() : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-    fun setupObservers() {
+    private fun setupObservers() {
         lifecycleScope.launch {
             homeViewModel.employee.collect { result ->
                 when (result) {
@@ -96,10 +95,12 @@ class HomeFragment() : Fragment() {
                                 .text =
                                 "${getString(R.string.setor_text)} - ${result.data?.setor} - ${result.data?.nome}"
 
-                        } else
+                        } else {
                             binding.databaseInfo
                                 .text =
                                 getString(R.string.database_not_found)
+                        }
+                        binding.homePageLoadingBar?.visibility = View.GONE
                     }
                     is Resource.Error -> {
                         Toast
@@ -109,6 +110,8 @@ class HomeFragment() : Fragment() {
                                 Toast.LENGTH_LONG
                             )
                             .show()
+
+                        binding.homePageLoadingBar?.visibility = View.GONE
                     }
                     is Resource.Loading -> {
                         binding.homePageLoadingBar?.visibility = View.VISIBLE
@@ -125,6 +128,7 @@ class HomeFragment() : Fragment() {
                             requireActivity()?.findViewById<TextView>(R.id.header_view_code)?.text =
                                 logged?.setor
                         }
+                        binding.homePageLoadingBar?.visibility = View.GONE
                     }
                     is Resource.Error -> {
                         Toast
@@ -134,6 +138,7 @@ class HomeFragment() : Fragment() {
                                 Toast.LENGTH_LONG
                             )
                             .show()
+                        binding.homePageLoadingBar?.visibility = View.GONE
                     }
                     is Resource.Loading -> {
                         binding.homePageLoadingBar?.visibility = View.VISIBLE

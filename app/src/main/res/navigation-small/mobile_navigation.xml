@@ -14,7 +14,7 @@
             android:id="@+id/action_nav_home_to_HomeNavigation"
             app:destination="@id/HomeNavigation" />
         <argument
-            android:name="USER"
+            android:name="@string/home_to_visit_args"
             app:argType="com.kaskin.manager.presentation.user.login.states.LoggedInUserView"
             app:nullable="true" />
     </fragment>
@@ -48,6 +48,19 @@
                 android:defaultValue="@null"
                 app:argType="com.kaskin.manager.presentation.user.login.states.LoggedInUserView"
                 app:nullable="true" />
+            <action
+                android:id="@+id/action_visitListFragment_to_pedidosFragment"
+                app:destination="@id/pedidosFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/pedidosFragment"
+            android:name="com.kaskin.manager.presentation.vendas.pedidos.PedidosFragment"
+            android:label="@string/menu_pedidos"
+            tools:layout="@layout/fragment_pedidos" >
+            <argument
+                android:name="@string/visit_to_pedidos_args"
+                app:argType="integer"
+                android:defaultValue="0" />
         </fragment>
     </navigation>
     <fragment
